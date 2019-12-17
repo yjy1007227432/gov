@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 @EnableScheduling//开启定时任务支持
+@MapperScan(basePackages ={"org.competition.mapper"})
 public class CompetitionServerApplication {
 
     public static void main(String[] args) {

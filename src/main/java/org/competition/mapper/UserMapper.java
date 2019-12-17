@@ -1,33 +1,30 @@
 package org.competition.mapper;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.competition.bean.Role;
-import org.competition.bean.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
-@Mapper
+import org.apache.ibatis.annotations.Param;
+import org.competition.domain.User;
+import org.competition.domain.UserExample;
+
 public interface UserMapper {
+    int countByExample(UserExample example);
 
-    User loadUserByUsername(@Param("username") String username);
+    int deleteByExample(UserExample example);
 
-    long reg(User user);
+    int deleteByPrimaryKey(Integer id);
 
-    int updateUserEmail(@Param("email") String email, @Param("id") Long id);
+    int insert(User record);
 
-    List<User> getUserByNickname(@Param("nickname") String nickname);
+    int insertSelective(User record);
 
-    List<Role> getAllRole();
+    List<User> selectByExample(UserExample example);
 
-    int updateUserEnabled(@Param("enabled") Boolean enabled, @Param("uid") Long uid);
+    User selectByPrimaryKey(Integer id);
 
-    int deleteUserById(Long uid);
+    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
-    int deleteUserRolesByUid(Long id);
+    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
 
-    int setUserRoles(@Param("rids") Long[] rids, @Param("id") Long id);
+    int updateByPrimaryKeySelective(User record);
 
-    User getUserById(@Param("id") Long id);
+    int updateByPrimaryKey(User record);
 }
