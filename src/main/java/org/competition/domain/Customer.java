@@ -5,8 +5,6 @@ import java.util.Date;
 public class Customer {
     private Integer id;
 
-    private String vipcard;
-
     private Date createTime;
 
     private Date updateTime;
@@ -15,7 +13,9 @@ public class Customer {
 
     private String updateUser;
 
-    private String org;
+    private String vipcard;
+
+    private String name;
 
     private String customerManager;
 
@@ -35,14 +35,6 @@ public class Customer {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getVipcard() {
-        return vipcard;
-    }
-
-    public void setVipcard(String vipcard) {
-        this.vipcard = vipcard == null ? null : vipcard.trim();
     }
 
     public Date getCreateTime() {
@@ -77,12 +69,20 @@ public class Customer {
         this.updateUser = updateUser == null ? null : updateUser.trim();
     }
 
-    public String getOrg() {
-        return org;
+    public String getVipcard() {
+        return vipcard;
     }
 
-    public void setOrg(String org) {
-        this.org = org == null ? null : org.trim();
+    public void setVipcard(String vipcard) {
+        this.vipcard = vipcard == null ? null : vipcard.trim();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public String getCustomerManager() {

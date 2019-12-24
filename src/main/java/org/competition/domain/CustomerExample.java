@@ -165,76 +165,6 @@ public class CustomerExample {
             return (Criteria) this;
         }
 
-        public Criteria andVipcardIsNull() {
-            addCriterion("vipcard is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipcardIsNotNull() {
-            addCriterion("vipcard is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipcardEqualTo(String value) {
-            addCriterion("vipcard =", value, "vipcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipcardNotEqualTo(String value) {
-            addCriterion("vipcard <>", value, "vipcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipcardGreaterThan(String value) {
-            addCriterion("vipcard >", value, "vipcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipcardGreaterThanOrEqualTo(String value) {
-            addCriterion("vipcard >=", value, "vipcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipcardLessThan(String value) {
-            addCriterion("vipcard <", value, "vipcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipcardLessThanOrEqualTo(String value) {
-            addCriterion("vipcard <=", value, "vipcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipcardLike(String value) {
-            addCriterion("vipcard like", value, "vipcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipcardNotLike(String value) {
-            addCriterion("vipcard not like", value, "vipcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipcardIn(List<String> values) {
-            addCriterion("vipcard in", values, "vipcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipcardNotIn(List<String> values) {
-            addCriterion("vipcard not in", values, "vipcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipcardBetween(String value1, String value2) {
-            addCriterion("vipcard between", value1, value2, "vipcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipcardNotBetween(String value1, String value2) {
-            addCriterion("vipcard not between", value1, value2, "vipcard");
-            return (Criteria) this;
-        }
-
         public Criteria andCreateTimeIsNull() {
             addCriterion("create_time is null");
             return (Criteria) this;
@@ -495,73 +425,143 @@ public class CustomerExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrgIsNull() {
-            addCriterion("org is null");
+        public Criteria andVipcardIsNull() {
+            addCriterion("vipcard is null");
             return (Criteria) this;
         }
 
-        public Criteria andOrgIsNotNull() {
-            addCriterion("org is not null");
+        public Criteria andVipcardIsNotNull() {
+            addCriterion("vipcard is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOrgEqualTo(String value) {
-            addCriterion("org =", value, "org");
+        public Criteria andVipcardEqualTo(String value) {
+            addCriterion("vipcard =", value, "vipcard");
             return (Criteria) this;
         }
 
-        public Criteria andOrgNotEqualTo(String value) {
-            addCriterion("org <>", value, "org");
+        public Criteria andVipcardNotEqualTo(String value) {
+            addCriterion("vipcard <>", value, "vipcard");
             return (Criteria) this;
         }
 
-        public Criteria andOrgGreaterThan(String value) {
-            addCriterion("org >", value, "org");
+        public Criteria andVipcardGreaterThan(String value) {
+            addCriterion("vipcard >", value, "vipcard");
             return (Criteria) this;
         }
 
-        public Criteria andOrgGreaterThanOrEqualTo(String value) {
-            addCriterion("org >=", value, "org");
+        public Criteria andVipcardGreaterThanOrEqualTo(String value) {
+            addCriterion("vipcard >=", value, "vipcard");
             return (Criteria) this;
         }
 
-        public Criteria andOrgLessThan(String value) {
-            addCriterion("org <", value, "org");
+        public Criteria andVipcardLessThan(String value) {
+            addCriterion("vipcard <", value, "vipcard");
             return (Criteria) this;
         }
 
-        public Criteria andOrgLessThanOrEqualTo(String value) {
-            addCriterion("org <=", value, "org");
+        public Criteria andVipcardLessThanOrEqualTo(String value) {
+            addCriterion("vipcard <=", value, "vipcard");
             return (Criteria) this;
         }
 
-        public Criteria andOrgLike(String value) {
-            addCriterion("org like", value, "org");
+        public Criteria andVipcardLike(String value) {
+            addCriterion("vipcard like", value, "vipcard");
             return (Criteria) this;
         }
 
-        public Criteria andOrgNotLike(String value) {
-            addCriterion("org not like", value, "org");
+        public Criteria andVipcardNotLike(String value) {
+            addCriterion("vipcard not like", value, "vipcard");
             return (Criteria) this;
         }
 
-        public Criteria andOrgIn(List<String> values) {
-            addCriterion("org in", values, "org");
+        public Criteria andVipcardIn(List<String> values) {
+            addCriterion("vipcard in", values, "vipcard");
             return (Criteria) this;
         }
 
-        public Criteria andOrgNotIn(List<String> values) {
-            addCriterion("org not in", values, "org");
+        public Criteria andVipcardNotIn(List<String> values) {
+            addCriterion("vipcard not in", values, "vipcard");
             return (Criteria) this;
         }
 
-        public Criteria andOrgBetween(String value1, String value2) {
-            addCriterion("org between", value1, value2, "org");
+        public Criteria andVipcardBetween(String value1, String value2) {
+            addCriterion("vipcard between", value1, value2, "vipcard");
             return (Criteria) this;
         }
 
-        public Criteria andOrgNotBetween(String value1, String value2) {
-            addCriterion("org not between", value1, value2, "org");
+        public Criteria andVipcardNotBetween(String value1, String value2) {
+            addCriterion("vipcard not between", value1, value2, "vipcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameIsNull() {
+            addCriterion("name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameIsNotNull() {
+            addCriterion("name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("name =", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("name <>", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("name >", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("name >=", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameLessThan(String value) {
+            addCriterion("name <", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("name <=", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotLike(String value) {
+            addCriterion("name not like", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("name in", values, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("name not in", values, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("name between", value1, value2, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
 

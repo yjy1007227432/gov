@@ -3,12 +3,12 @@
 <mapper namespace="org.competition.mapper.CustomerMapper" >
   <resultMap id="BaseResultMap" type="org.competition.domain.Customer" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="vipcard" property="vipcard" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="create_user" property="createUser" jdbcType="VARCHAR" />
     <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
-    <result column="org" property="org" jdbcType="VARCHAR" />
+    <result column="vipcard" property="vipcard" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="customer_manager" property="customerManager" jdbcType="VARCHAR" />
     <result column="manager_phone" property="managerPhone" jdbcType="VARCHAR" />
     <result column="contact" property="contact" jdbcType="VARCHAR" />
@@ -75,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, vipcard, create_time, update_time, create_user, update_user, org, customer_manager, 
+    id, create_time, update_time, create_user, update_user, vipcard, name, customer_manager, 
     manager_phone, contact, contact_phone, customer_type, customer_group
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.competition.domain.CustomerExample" >
@@ -109,14 +109,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.competition.domain.Customer" >
-    insert into customer (id, vipcard, create_time, 
-      update_time, create_user, update_user, 
-      org, customer_manager, manager_phone, 
+    insert into customer (id, create_time, update_time, 
+      create_user, update_user, vipcard, 
+      name, customer_manager, manager_phone, 
       contact, contact_phone, customer_type, 
       customer_group)
-    values (#{id,jdbcType=INTEGER}, #{vipcard,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, 
-      #{org,jdbcType=VARCHAR}, #{customerManager,jdbcType=VARCHAR}, #{managerPhone,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, #{vipcard,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{customerManager,jdbcType=VARCHAR}, #{managerPhone,jdbcType=VARCHAR}, 
       #{contact,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, #{customerType,jdbcType=VARCHAR}, 
       #{customerGroup,jdbcType=VARCHAR})
   </insert>
@@ -125,9 +125,6 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
-      </if>
-      <if test="vipcard != null" >
-        vipcard,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -141,8 +138,11 @@
       <if test="updateUser != null" >
         update_user,
       </if>
-      <if test="org != null" >
-        org,
+      <if test="vipcard != null" >
+        vipcard,
+      </if>
+      <if test="name != null" >
+        name,
       </if>
       <if test="customerManager != null" >
         customer_manager,
@@ -167,9 +167,6 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="vipcard != null" >
-        #{vipcard,jdbcType=VARCHAR},
-      </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -182,8 +179,11 @@
       <if test="updateUser != null" >
         #{updateUser,jdbcType=VARCHAR},
       </if>
-      <if test="org != null" >
-        #{org,jdbcType=VARCHAR},
+      <if test="vipcard != null" >
+        #{vipcard,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
       </if>
       <if test="customerManager != null" >
         #{customerManager,jdbcType=VARCHAR},
@@ -217,9 +217,6 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.vipcard != null" >
-        vipcard = #{record.vipcard,jdbcType=VARCHAR},
-      </if>
       <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -232,8 +229,11 @@
       <if test="record.updateUser != null" >
         update_user = #{record.updateUser,jdbcType=VARCHAR},
       </if>
-      <if test="record.org != null" >
-        org = #{record.org,jdbcType=VARCHAR},
+      <if test="record.vipcard != null" >
+        vipcard = #{record.vipcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.customerManager != null" >
         customer_manager = #{record.customerManager,jdbcType=VARCHAR},
@@ -261,12 +261,12 @@
   <update id="updateByExample" parameterType="map" >
     update customer
     set id = #{record.id,jdbcType=INTEGER},
-      vipcard = #{record.vipcard,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       create_user = #{record.createUser,jdbcType=VARCHAR},
       update_user = #{record.updateUser,jdbcType=VARCHAR},
-      org = #{record.org,jdbcType=VARCHAR},
+      vipcard = #{record.vipcard,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
       customer_manager = #{record.customerManager,jdbcType=VARCHAR},
       manager_phone = #{record.managerPhone,jdbcType=VARCHAR},
       contact = #{record.contact,jdbcType=VARCHAR},
@@ -280,9 +280,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="org.competition.domain.Customer" >
     update customer
     <set >
-      <if test="vipcard != null" >
-        vipcard = #{vipcard,jdbcType=VARCHAR},
-      </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -295,8 +292,11 @@
       <if test="updateUser != null" >
         update_user = #{updateUser,jdbcType=VARCHAR},
       </if>
-      <if test="org != null" >
-        org = #{org,jdbcType=VARCHAR},
+      <if test="vipcard != null" >
+        vipcard = #{vipcard,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="customerManager != null" >
         customer_manager = #{customerManager,jdbcType=VARCHAR},
@@ -321,12 +321,12 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="org.competition.domain.Customer" >
     update customer
-    set vipcard = #{vipcard,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       create_user = #{createUser,jdbcType=VARCHAR},
       update_user = #{updateUser,jdbcType=VARCHAR},
-      org = #{org,jdbcType=VARCHAR},
+      vipcard = #{vipcard,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
       customer_manager = #{customerManager,jdbcType=VARCHAR},
       manager_phone = #{managerPhone,jdbcType=VARCHAR},
       contact = #{contact,jdbcType=VARCHAR},
