@@ -42,14 +42,17 @@ public class NewsService {
     }
 
     @GetMapping(value = "/update")
-    public int updateByPrimaryKeySelective(String title, String content, String updateUser, int id) {
+    public int updateNews(String title, String content, String updateUser, int id) {
         News news = new News();
         news.setContent(content).setUpdateUser(updateUser).setTitle(title).setId(id);
         int result = 0;
         try {
-            result = newsMapper.updateByPrimaryKey(news);
+            result = newsMapper.updateByPrimaryKeySelective(news);
         } catch (Exception e) {
             LOGGER.error("newsMapper.updateByPrimaryKey更新数据失败", e);
+        }
+        if(Objects.equals(result,0)){
+            LOGGER.error("无法查询到需要更新的数据");
         }
         return result;
     }
@@ -86,6 +89,9 @@ public class NewsService {
             news = newsMapper.selectByPrimaryKey(id);
         } catch (Exception e) {
             LOGGER.error("newsMapper.selectByExample查询数据失败", e);
+        }
+        if(Objects.equals(news,null)){
+            LOGGER.error("查询结果为空");
         }
         return news;
     }

@@ -42,14 +42,17 @@ public class ProductService {
     }
 
     @GetMapping(value = "/update")
-    public int updateByPrimaryKeySelective(String name,String content, String updateUser,int id){
+    public int updateProduct(String name,String content, String updateUser,int id){
         Product product = new Product();
         product.setName(name).setContent(content).setUpdateUser(updateUser).setId(id);
         int result = 0;
         try {
-            result = productMapper.updateByPrimaryKey(product);
+            result = productMapper.updateByPrimaryKeySelective(product);
         } catch (Exception e) {
             LOGGER.error("productMapper.updateByPrimaryKey更新数据失败", e);
+        }
+        if(Objects.equals(result,0)){
+            LOGGER.error("无法查询到需要更新的数据");
         }
         return result;
     }
@@ -86,6 +89,9 @@ public class ProductService {
             product = productMapper.selectByPrimaryKey(id);
         } catch (Exception e) {
             LOGGER.error("productMapper.selectByPrimaryKey 查询数据失败", e);
+        }
+        if(Objects.equals(product,null)){
+            LOGGER.error("查询结果为空");
         }
         return product;
     }

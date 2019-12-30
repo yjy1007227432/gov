@@ -67,15 +67,18 @@ public class OrderService {
     }
 
     @GetMapping(value = "/update")
-    public int updateByPrimaryKeySelective(int customerId,String contact,String contactPhone,String contactMail,String feedback,String content,String updateUser,int id){
+    public int updateOrder(int customerId,String contact,String contactPhone,String contactMail,String feedback,String content,String updateUser,int id){
         Order order = new Order().setCustomerId(customerId).setContact(contact).setContactPhone(contactPhone).
                 setContactEmail(contactMail).setFeedback(feedback).setContent(content).setCreateTime(Date.from(Instant.now())).setId(id);
         int result = 0;
         try {
-            result =  orderMapper.updateByPrimaryKey(order);
+            result =  orderMapper.updateByPrimaryKeySelective(order);
         }
         catch (Exception e){
             LOGGER.error("orderMapper.updateByPrimaryKey更新数据失败", e);
+        }
+        if(Objects.equals(result,0)){
+            LOGGER.error("无法查询到需要更新的数据");
         }
         return result;
     }
@@ -113,6 +116,9 @@ public class OrderService {
             order = orderMapper.selectByPrimaryKey(id);
         } catch (Exception e) {
             LOGGER.error("orderMapper.selectByExample查询数据失败", e);
+        }
+        if(Objects.equals(order,null)){
+            LOGGER.error("查询结果为空");
         }
         return order;
     }

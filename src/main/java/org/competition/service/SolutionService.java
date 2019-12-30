@@ -42,14 +42,17 @@ public class SolutionService {
     }
 
     @GetMapping(value = "/update")
-    public int updateByPrimaryKeySelective(String name,String content,String updateUser,int id){
+    public int updateSolution(String name,String content,String updateUser,int id){
         Solution solution = new Solution().setName(name).setContent(content).
                 setUpdateUser(updateUser).setId(id);
         int result = 0;
         try {
-            result = solutionMapper.updateByPrimaryKey(solution);
+            result = solutionMapper.updateByPrimaryKeySelective(solution);
         } catch (Exception e) {
-            LOGGER.error("solutionMapper.updateByPrimaryKey 更新数据失败", e);
+            LOGGER.error("solutionMapper.updateByPrimaryKeySelective 更新数据失败", e);
+        }
+        if(Objects.equals(result,0)){
+            LOGGER.error("无法查询到需要更新的数据");
         }
         return result;
     }
@@ -87,6 +90,9 @@ public class SolutionService {
             solution = solutionMapper.selectByPrimaryKey(id);
         } catch (Exception e) {
             LOGGER.error("solutionMapper.selectByPrimaryKey 查询数据失败", e);
+        }
+        if(Objects.equals(solution,null)){
+            LOGGER.error("查询结果为空");
         }
         return solution;
     }
