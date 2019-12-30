@@ -1,9 +1,11 @@
 package org.competition.mapper;
 
 import org.competition.CompetitionServerApplication;
-import org.competition.bean.IdAndName;
-import org.competition.domain.Customer;
+import org.competition.dao.IdAndName;
+import org.competition.dao.OrderPojo;
 import org.competition.service.CustomerService;
+import org.competition.service.NewsService;
+import org.competition.service.OrderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
@@ -12,7 +14,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -30,6 +34,13 @@ public class NewsMapperTest {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private NewsService newsService;
+
+
 //    @Test
 //    public void test2(){
 //        News news1 = new News();
@@ -43,12 +54,46 @@ public class NewsMapperTest {
 //        newsMapper.insert(news1);
 //    }
 
-    @Test
-    public void selectIdAndName() {
-        List<IdAndName> result = new ArrayList<>();
-        result = customerService.selectIdAndName();
+//    @Test
+//    public void selectIdAndName() {
+//        List<IdAndName> result = new ArrayList<>();
+//        result = customerService.selectIdAndName();
+//
+//        System.out.println();
+//    }
 
-        System.out.println();
+//    @Test
+//    public void testDate(){
+//        //完整格式
+//        Date d = new Date();
+//        SimpleDateFormat s1 = new SimpleDateFormat("YYYY-MM-dd HH:MM:ss");
+//        System.out.println(s1.format(d));
+//    }
+//
+//
+//    @Test
+//    public void test3(){
+//        OrderPojo orderPojo = new OrderPojo();
+//        orderPojo.setContact("111");
+//        orderPojo.setContactEmail("111");
+//        orderPojo.setContactPhone("111");
+//        orderPojo.setCustomerId(111);
+//        orderPojo.setFeedback("111");
+//        orderPojo.setUpdateUser("yjy");
+//        orderPojo.setContent("111");
+//
+//        orderService.insertOrder(orderPojo);
+//    }
+
+    @Test
+    public void newsTest(){
+   // newsService.addNews("111","111","yjy");
+     newsService.updateByPrimaryKeySelective("222","222","yjy",82);
+
+     //   newsService.deleteNewsById(81);
+
+
+
     }
 
 

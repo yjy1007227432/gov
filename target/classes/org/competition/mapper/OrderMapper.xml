@@ -106,7 +106,7 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.competition.domain.Order" >
-    insert into order (id, customer_id, create_time, 
+    insert into `order` (id, customer_id, create_time,
       update_time, update_user, contact, 
       contact_phone, contact_email, content, 
       feedback)

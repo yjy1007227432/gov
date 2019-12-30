@@ -1,4 +1,4 @@
-package org.competition.bean;
+package org.competition.dao;
 
 public class IdAndName {
     private Integer id;
