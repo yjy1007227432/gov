@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.apache.logging.log4j.Logger;
 
+import java.net.URLDecoder;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -53,7 +54,11 @@ public class OrderService {
     }
 
     @GetMapping(value = "/add")
-    public int addOrder(Integer customerId,String contact,String contactPhone,String contactMail,String feedback,String content,Date createTime){
+    public int addOrder(Integer customerId,String contact,String contactPhone,String contactMail,String feedback,String content){
+        contact = URLDecoder.decode(contact);
+        content = URLDecoder.decode(content);
+        feedback = URLDecoder.decode(feedback);
+        contactMail = URLDecoder.decode(contactMail);
         Order order = new Order().setCustomerId(customerId).setContact(contact).setContactPhone(contactPhone).
                 setContactEmail(contactMail).setFeedback(feedback).setContent(content).setCreateTime(Date.from(Instant.now()));
         int result = 0;
@@ -68,8 +73,13 @@ public class OrderService {
 
     @GetMapping(value = "/update")
     public int updateOrder(int customerId,String contact,String contactPhone,String contactMail,String feedback,String content,String updateUser,int id){
+        contact = URLDecoder.decode(contact);
+        content = URLDecoder.decode(content);
+        feedback = URLDecoder.decode(feedback);
+        contactMail = URLDecoder.decode(contactMail);
+        updateUser = URLDecoder.decode(updateUser);
         Order order = new Order().setCustomerId(customerId).setContact(contact).setContactPhone(contactPhone).
-                setContactEmail(contactMail).setFeedback(feedback).setContent(content).setCreateTime(Date.from(Instant.now())).setId(id);
+                setContactEmail(contactMail).setFeedback(feedback).setContent(content).setId(id).setUpdateUser(updateUser).setUpdateTime(Date.from(Instant.now()));
         int result = 0;
         try {
             result =  orderMapper.updateByPrimaryKeySelective(order);

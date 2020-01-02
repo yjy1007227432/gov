@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.competition.domain.Product;
 import org.competition.domain.Solution;
 import org.competition.mapper.SolutionMapper;
+import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URLDecoder;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +32,9 @@ public class SolutionService {
 
     @GetMapping(value = "/add")
     public int addSolution(String name, String content, String createUser){
+        name = URLDecoder.decode(name);
+        content = URLDecoder.decode(content);
+        createUser = URLDecoder.decode(createUser);
         Solution solution = new Solution().setName(name).setContent(content).
                 setCreateUser(createUser).setCreateTime(Date.from(Instant.now()));
         int result = 0;
@@ -43,8 +48,11 @@ public class SolutionService {
 
     @GetMapping(value = "/update")
     public int updateSolution(String name,String content,String updateUser,int id){
+        name = URLDecoder.decode(name);
+        content = URLDecoder.decode(content);
+        updateUser = URLDecoder.decode(updateUser);
         Solution solution = new Solution().setName(name).setContent(content).
-                setUpdateUser(updateUser).setId(id);
+                setUpdateUser(updateUser).setId(id).setUpdateTime(Date.from(Instant.now()));
         int result = 0;
         try {
             result = solutionMapper.updateByPrimaryKeySelective(solution);

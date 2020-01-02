@@ -81,7 +81,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from order
+    from `order`
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -189,7 +189,7 @@
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update order
+    update `order`
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
@@ -227,7 +227,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update order
+    update `order`
     set id = #{record.id,jdbcType=INTEGER},
       customer_id = #{record.customerId,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -243,7 +243,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="org.competition.domain.Order" >
-    update order
+    update `order`
     <set >
       <if test="customerId != null" >
         customer_id = #{customerId,jdbcType=INTEGER},
@@ -276,7 +276,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.competition.domain.Order" >
-    update order
+    update `order`
     set customer_id = #{customerId,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},

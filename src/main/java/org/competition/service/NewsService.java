@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sun.security.jca.GetInstance;
 
+import java.net.URLDecoder;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +31,9 @@ public class NewsService {
 
     @GetMapping(value = "/add")
     public int addNews(String title, String content, String createUser) {
+        title = URLDecoder.decode(title);
+        content = URLDecoder.decode(content);
+        createUser = URLDecoder.decode(createUser);
         News news = new News();
         news.setContent(content).setCreateUser(createUser).setTitle(title).setCreateTime(Date.from(Instant.now()));
         int result = 0;
@@ -43,8 +47,11 @@ public class NewsService {
 
     @GetMapping(value = "/update")
     public int updateNews(String title, String content, String updateUser, int id) {
+        title = URLDecoder.decode(title);
+        content = URLDecoder.decode(content);
+        updateUser = URLDecoder.decode(updateUser);
         News news = new News();
-        news.setContent(content).setUpdateUser(updateUser).setTitle(title).setId(id);
+        news.setContent(content).setUpdateUser(updateUser).setTitle(title).setId(id).setUpdateTime(Date.from(Instant.now()));
         int result = 0;
         try {
             result = newsMapper.updateByPrimaryKeySelective(news);

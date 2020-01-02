@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URLDecoder;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -30,8 +32,11 @@ public class ProductService {
 
     @GetMapping(value = "/add")
     public int addProduct(String name, String content, String createUser){
+        name = URLDecoder.decode(name);
+        content = URLDecoder.decode(content);
+        createUser = URLDecoder.decode(createUser);
         Product product = new Product();
-        product.setName(name).setContent(content).setCreateUser(createUser);
+        product.setName(name).setContent(content).setCreateUser(createUser).setCreateTime(Date.from(Instant.now()));
         int result = 0;
         try {
             result = productMapper.insert(product);
@@ -43,8 +48,11 @@ public class ProductService {
 
     @GetMapping(value = "/update")
     public int updateProduct(String name,String content, String updateUser,int id){
+        name = URLDecoder.decode(name);
+        content = URLDecoder.decode(content);
+        updateUser = URLDecoder.decode(updateUser);
         Product product = new Product();
-        product.setName(name).setContent(content).setUpdateUser(updateUser).setId(id);
+        product.setName(name).setContent(content).setUpdateUser(updateUser).setId(id).setUpdateTime(Date.from(Instant.now()));
         int result = 0;
         try {
             result = productMapper.updateByPrimaryKeySelective(product);

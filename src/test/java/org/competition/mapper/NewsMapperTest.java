@@ -4,6 +4,7 @@ import org.competition.CompetitionServerApplication;
 import org.competition.dao.IdAndName;
 import org.competition.dao.OrderPojo;
 import org.competition.domain.News;
+import org.competition.domain.Order;
 import org.competition.service.CustomerService;
 import org.competition.service.NewsService;
 import org.competition.service.OrderService;
@@ -88,12 +89,9 @@ public class NewsMapperTest {
 
     @Test
     public void newsTest(){
-     newsService.addNews("111","111","yjy");
-    // newsService.updateNews("222","222","yjy",84);
+        List<Order> orderList = orderService.ListOrder();
 
-     // newsService.deleteNewsById(82);
-        List<News> news = newsService.ListNews();
-
+        System.out.println();
     }
 
 
