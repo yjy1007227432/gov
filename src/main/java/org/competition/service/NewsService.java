@@ -6,10 +6,7 @@ import org.competition.domain.News;
 import org.competition.mapper.NewsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sun.security.jca.GetInstance;
 
 import java.net.URLDecoder;
@@ -21,7 +18,7 @@ import java.util.Objects;
 @Component
 @RestController
 @RequestMapping("/gov/news")
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 public class NewsService {
 
     public static final Logger LOGGER = LogManager.getLogger(NewsService.class);
@@ -30,7 +27,7 @@ public class NewsService {
     private NewsMapper newsMapper;
 
     @GetMapping(value = "/add")
-    public int addNews(String title, String content, String createUser) {
+    public int addNews(@RequestParam(required=false) String title, @RequestParam(required=false) String content, @RequestParam(required=false) String createUser) {
         title = URLDecoder.decode(title);
         content = URLDecoder.decode(content);
         createUser = URLDecoder.decode(createUser);
@@ -46,7 +43,7 @@ public class NewsService {
     }
 
     @GetMapping(value = "/update")
-    public int updateNews(String title, String content, String updateUser, int id) {
+    public int updateNews(@RequestParam(required=false) String title,@RequestParam(required=false) String content,@RequestParam(required=false)  String updateUser, int id) {
         title = URLDecoder.decode(title);
         content = URLDecoder.decode(content);
         updateUser = URLDecoder.decode(updateUser);

@@ -16,7 +16,7 @@ import java.util.List;
 @Component
 @RestController
 @RequestMapping("/gov/customer")
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 public class CustomerService {
     @Autowired
     private CustomerMapper customerMapper;

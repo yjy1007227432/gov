@@ -8,10 +8,7 @@ import org.competition.mapper.SolutionMapper;
 import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URLDecoder;
 import java.time.Instant;
@@ -22,7 +19,7 @@ import java.util.Objects;
 @Component
 @RestController
 @RequestMapping("/gov/solution")
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 public class SolutionService {
 
     public static final Logger LOGGER = LogManager.getLogger(SolutionService.class);
@@ -31,7 +28,7 @@ public class SolutionService {
     private SolutionMapper solutionMapper;
 
     @GetMapping(value = "/add")
-    public int addSolution(String name, String content, String createUser){
+    public int addSolution(@RequestParam(required=false) String name, @RequestParam(required=false) String content, @RequestParam(required=false) String createUser){
         name = URLDecoder.decode(name);
         content = URLDecoder.decode(content);
         createUser = URLDecoder.decode(createUser);
@@ -47,7 +44,7 @@ public class SolutionService {
     }
 
     @GetMapping(value = "/update")
-    public int updateSolution(String name,String content,String updateUser,int id){
+    public int updateSolution(@RequestParam(required=false) String name,@RequestParam(required=false) String content,@RequestParam(required=false) String updateUser,Integer id){
         name = URLDecoder.decode(name);
         content = URLDecoder.decode(content);
         updateUser = URLDecoder.decode(updateUser);

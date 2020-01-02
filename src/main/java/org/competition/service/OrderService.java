@@ -9,10 +9,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.apache.logging.log4j.Logger;
 
 import java.net.URLDecoder;
@@ -24,7 +21,7 @@ import java.util.Objects;
 @Component
 @RestController
 @RequestMapping("/gov/order")
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 public class OrderService {
 
     @Autowired
@@ -54,7 +51,7 @@ public class OrderService {
     }
 
     @GetMapping(value = "/add")
-    public int addOrder(Integer customerId,String contact,String contactPhone,String contactMail,String feedback,String content){
+    public int addOrder(@RequestParam(required=false) Integer customerId,@RequestParam(required=false)  String contact,@RequestParam(required=false)  String contactPhone,@RequestParam(required=false)  String contactMail,@RequestParam(required=false)  String feedback,@RequestParam(required=false)  String content){
         contact = URLDecoder.decode(contact);
         content = URLDecoder.decode(content);
         feedback = URLDecoder.decode(feedback);
@@ -72,7 +69,7 @@ public class OrderService {
     }
 
     @GetMapping(value = "/update")
-    public int updateOrder(int customerId,String contact,String contactPhone,String contactMail,String feedback,String content,String updateUser,int id){
+    public int updateOrder(@RequestParam(required=false) Integer customerId,@RequestParam(required=false) String contact,@RequestParam(required=false) String contactPhone,@RequestParam(required=false) String contactMail,@RequestParam(required=false) String feedback,@RequestParam(required=false) String content,@RequestParam(required=false) String updateUser,Integer id){
         contact = URLDecoder.decode(contact);
         content = URLDecoder.decode(content);
         feedback = URLDecoder.decode(feedback);
