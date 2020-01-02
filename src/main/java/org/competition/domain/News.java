@@ -1,5 +1,6 @@
 package org.competition.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -12,6 +13,7 @@ public class News {
 
     private String title;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;
 
     private Date updateTime;
