@@ -5,9 +5,11 @@ import org.competition.dao.IdAndName;
 import org.competition.dao.OrderPojo;
 import org.competition.domain.News;
 import org.competition.domain.Order;
+import org.competition.domain.User;
 import org.competition.service.CustomerService;
 import org.competition.service.NewsService;
 import org.competition.service.OrderService;
+import org.competition.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
@@ -41,6 +43,9 @@ public class NewsMapperTest {
 
     @Autowired
     private NewsService newsService;
+
+    @Autowired
+    private UserService userService;
 
 
 //    @Test
@@ -89,9 +94,8 @@ public class NewsMapperTest {
 
     @Test
     public void newsTest(){
-        List<Order> orderList = orderService.ListOrder();
+        userService.addUser("1","1","yjy","123","123","1");
 
-        System.out.println();
     }
 
 

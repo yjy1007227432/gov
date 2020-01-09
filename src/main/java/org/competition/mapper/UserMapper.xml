@@ -95,6 +95,12 @@
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByPhone" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where phone = #{phone,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
     where id = #{id,jdbcType=INTEGER}
@@ -108,7 +114,7 @@
   <insert id="insert" parameterType="org.competition.domain.User" >
     insert into user (id, login_id, create_time, 
       update_time, create_user, update_user, 
-      name, phone, password, 
+      `name`, phone, password,
       user_type)
     values (#{id,jdbcType=INTEGER}, #{loginId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, 
@@ -137,7 +143,7 @@
         update_user,
       </if>
       <if test="name != null" >
-        name,
+        `name`,
       </if>
       <if test="phone != null" >
         phone,
@@ -210,7 +216,7 @@
         update_user = #{record.updateUser,jdbcType=VARCHAR},
       </if>
       <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
+        `name` = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.phone != null" >
         phone = #{record.phone,jdbcType=VARCHAR},
@@ -234,7 +240,7 @@
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       create_user = #{record.createUser,jdbcType=VARCHAR},
       update_user = #{record.updateUser,jdbcType=VARCHAR},
-      name = #{record.name,jdbcType=VARCHAR},
+      `name` = #{record.name,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       user_type = #{record.userType,jdbcType=VARCHAR}
@@ -261,7 +267,7 @@
         update_user = #{updateUser,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+        `name` = #{name,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
         phone = #{phone,jdbcType=VARCHAR},
@@ -282,7 +288,7 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       create_user = #{createUser,jdbcType=VARCHAR},
       update_user = #{updateUser,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       user_type = #{userType,jdbcType=VARCHAR}
