@@ -2,6 +2,7 @@ package org.competition.config;
 
 import org.competition.control.LoginHandlerInterceptor;
 
+import org.competition.control.MyInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -12,11 +13,14 @@ import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Configuration
 public class MyWebMvcConfigurer implements WebMvcConfigurer{
 
+    @Resource
+    private MyInterceptor myInterceptor;//具体拦截器名称
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -25,7 +29,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer{
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor())
+        registry.addInterceptor(myInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/login","/index.html","/tiger/login")
                 .excludePathPatterns("/assets/**");
