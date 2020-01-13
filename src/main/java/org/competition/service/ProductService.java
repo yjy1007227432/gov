@@ -2,7 +2,6 @@ package org.competition.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.competition.domain.Order;
 import org.competition.domain.Product;
 import org.competition.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;

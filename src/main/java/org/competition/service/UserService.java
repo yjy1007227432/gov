@@ -20,7 +20,7 @@ import java.util.Objects;
 @RequestMapping("/gov/user")
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 public class UserService {
-    public static final Logger LOGGER = LogManager.getLogger(ProductService.class);
+    private static final Logger LOGGER = LogManager.getLogger(ProductService.class);
 
     @Autowired
     UserMapper userMapper;
@@ -95,6 +95,50 @@ public class UserService {
             LOGGER.error("查询结果为空");
         }
         return userList;
+    }
+
+    @GetMapping(value = "/updatepassword")
+    public String updatePassword(String name, String phone, String password, String newPassword) {
+        int result = 0;
+        name = URLDecoder.decode(name);
+        //验证用户名和密码，输入正确，跳转到dashboard
+        List<User> userList = userMapper.selectByPhone(phone);
+        if (userList == null) {
+            return "用户名为空";
+        }
+        if (Objects.equals(userList.get(0).getPassword(), password) && Objects.equals(userList.get(0).getPhone(), phone)&& Objects.equals(userList.get(0).getName(), name)) {
+            userList.get(0).setPhone(phone).setId(userList.get(0).getId()).setPassword(newPassword);
+            try {
+                userList.get(0).setPassword(newPassword);
+                result = userMapper.updateByPrimaryKeySelective(userList.get(0));
+            } catch (Exception e) {
+                LOGGER.error("  userMapper.updateByPrimaryKey 更新数据失败", e);
+            }
+            return "密码修改成功";
+        }
+        else {
+            return "密码或姓名错误";
+        }
+    }
+
+    @GetMapping(value = "/updateuser")
+    public int updateUser(@RequestParam(required=false) String loginId, @RequestParam(required=false) String updateUser, @RequestParam(required=false) String name, String phone, @RequestParam(required=false) String password, @RequestParam(required=false)  String userType){
+        name = URLDecoder.decode(name);
+        updateUser = URLDecoder.decode(updateUser);
+        List<User> userList = userMapper.selectByPhone(phone);
+        if (userList == null) {
+            LOGGER.error("用户名为空");
+        }
+        User user = userList.get(0);
+        user.setLoginId(loginId).setUpdateTime(Date.from(Instant.now())).
+                setUpdateUser(updateUser).setName(name).setPhone(phone).setPassword(password).setUserType(userType);
+        int result = 0;
+        try {
+            result = userMapper.updateByPrimaryKeySelective(user);
+        } catch (Exception e) {
+            LOGGER.error(" userMapper.updateByPrimaryKeySelective  更新数据失败", e);
+        }
+        return result;
     }
 
 }
