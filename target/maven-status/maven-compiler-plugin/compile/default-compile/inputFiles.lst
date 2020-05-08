@@ -1,32 +1,61 @@
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\CustomerExample.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\CompetitionServerApplication.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\dao\IdAndName.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\Solution.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\mapper\UserMapper.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\SolutionExample.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\NewsExample.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\Order.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\OrderExample.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\mapper\ProductMapper.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\service\CustomerService.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\dao\OrderPojo.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\UserExample.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\mapper\NewsMapper.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\ProductExample.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\Product.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\mapper\OrderMapper.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\User.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\RespBean.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\mapper\CustomerMapper.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\service\UserService.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\ResultUtil.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\News.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\service\OrderService.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\ServletInitializer.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\service\ProductService.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\Customer.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\mapper\SolutionMapper.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\Result.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\service\NewsService.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\service\SolutionService.java
-C:\Users\yao junyi\Desktop\gov\src\main\java\org\competition\domain\ResultCode.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\control\IndexController.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\LoginResult.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\control\TestController.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\utils\Decode.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\ResourcevpsService.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\SolutionService.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\dao\OrderCustomer.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\control\FileController.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Customer.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Result.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Dictvalue.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\ProductExample.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\ResourcerdsMapper.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\DictvalueExample.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\OrderExample.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\NewsService.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\CustomerExample.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\control\UploadDownloadController.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\dictvalueService.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\dao\OrderPojo.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Product.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\User.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\ResourceslbService.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\DictvalueMapper.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\SolutionMapper.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\CustomerService.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\OrderMapper.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\UserMapper.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\CustomerMapper.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\NewsExample.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\ProductService.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\UserService.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Solution.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\News.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\ResourceslbExample.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\ResourceossExample.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\dao\IdAndName.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\ResourcevpsExample.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\ResourceossMapper.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\ResourceslbMapper.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\CompetitionServerApplication.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Order.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Resourceoss.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\ResultCode.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\SolutionExample.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Resourcerds.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Resourcevps.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\ProductMapper.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\OrderService.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\ResultUtil.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\ResourcerdsExample.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\NewsMapper.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\RespBean.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\DictvalueKV.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\control\LoginController.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\ServletInitializer.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\ResourcerdsService.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\ResourcevpsMapper.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\UserExample.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Resourceslb.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\ResourceossService.java

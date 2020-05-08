@@ -1,861 +1,1685 @@
+/*     */
 package org.competition.domain;
+/*     */
+/*     */
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+/*     */ import java.util.Date;
+/*     */ import java.util.List;
 
-public class OrderExample {
-    protected String orderByClause;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */ public class OrderExample
+        /*     */ {
+    /*     */   protected String orderByClause;
+    /*     */   protected boolean distinct;
+    /*  15 */   protected List<Criteria> oredCriteria = new ArrayList<>();
 
-    protected boolean distinct;
-
-    protected List<Criteria> oredCriteria;
-
-    public OrderExample() {
-        oredCriteria = new ArrayList<Criteria>();
-    }
-
+    /*     */
+    /*     */
+    /*     */
     public void setOrderByClause(String orderByClause) {
+        /*  19 */
         this.orderByClause = orderByClause;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public String getOrderByClause() {
-        return orderByClause;
+        /*  23 */
+        return this.orderByClause;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public void setDistinct(boolean distinct) {
+        /*  27 */
         this.distinct = distinct;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public boolean isDistinct() {
-        return distinct;
+        /*  31 */
+        return this.distinct;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public List<Criteria> getOredCriteria() {
-        return oredCriteria;
+        /*  35 */
+        return this.oredCriteria;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public void or(Criteria criteria) {
-        oredCriteria.add(criteria);
+        /*  39 */
+        this.oredCriteria.add(criteria);
+        /*     */
     }
 
+    /*     */
+    /*     */
     public Criteria or() {
+        /*  43 */
         Criteria criteria = createCriteriaInternal();
-        oredCriteria.add(criteria);
+        /*  44 */
+        this.oredCriteria.add(criteria);
+        /*  45 */
         return criteria;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public Criteria createCriteria() {
+        /*  49 */
         Criteria criteria = createCriteriaInternal();
-        if (oredCriteria.size() == 0) {
-            oredCriteria.add(criteria);
+        /*  50 */
+        if (this.oredCriteria.size() == 0) {
+            /*  51 */
+            this.oredCriteria.add(criteria);
+            /*     */
         }
+        /*  53 */
         return criteria;
+        /*     */
     }
 
+    /*     */
+    /*     */
     protected Criteria createCriteriaInternal() {
+        /*  57 */
         Criteria criteria = new Criteria();
+        /*  58 */
         return criteria;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public void clear() {
-        oredCriteria.clear();
-        orderByClause = null;
-        distinct = false;
+        /*  62 */
+        this.oredCriteria.clear();
+        /*  63 */
+        this.orderByClause = null;
+        /*  64 */
+        this.distinct = false;
+        /*     */
     }
 
-    protected abstract static class GeneratedCriteria {
-        protected List<Criterion> criteria;
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */   protected static abstract class GeneratedCriteria
+            /*     */ {
+        /*  72 */     protected List<OrderExample.Criterion> criteria = new ArrayList<>();
 
-        protected GeneratedCriteria() {
-            super();
-            criteria = new ArrayList<Criterion>();
-        }
-
+        /*     */
+        /*     */
+        /*     */
         public boolean isValid() {
-            return criteria.size() > 0;
+            /*  76 */
+            return (this.criteria.size() > 0);
+            /*     */
         }
 
-        public List<Criterion> getAllCriteria() {
-            return criteria;
+        /*     */
+        /*     */
+        public List<OrderExample.Criterion> getAllCriteria() {
+            /*  80 */
+            return this.criteria;
+            /*     */
         }
 
-        public List<Criterion> getCriteria() {
-            return criteria;
+        /*     */
+        /*     */
+        public List<OrderExample.Criterion> getCriteria() {
+            /*  84 */
+            return this.criteria;
+            /*     */
         }
 
+        /*     */
+        /*     */
         protected void addCriterion(String condition) {
+            /*  88 */
             if (condition == null) {
+                /*  89 */
                 throw new RuntimeException("Value for condition cannot be null");
+                /*     */
             }
-            criteria.add(new Criterion(condition));
+            /*  91 */
+            this.criteria.add(new OrderExample.Criterion(condition));
+            /*     */
         }
 
+        /*     */
+        /*     */
         protected void addCriterion(String condition, Object value, String property) {
+            /*  95 */
             if (value == null) {
+                /*  96 */
                 throw new RuntimeException("Value for " + property + " cannot be null");
+                /*     */
             }
-            criteria.add(new Criterion(condition, value));
+            /*  98 */
+            this.criteria.add(new OrderExample.Criterion(condition, value));
+            /*     */
         }
 
+        /*     */
+        /*     */
         protected void addCriterion(String condition, Object value1, Object value2, String property) {
+            /* 102 */
             if (value1 == null || value2 == null) {
+                /* 103 */
                 throw new RuntimeException("Between values for " + property + " cannot be null");
+                /*     */
             }
-            criteria.add(new Criterion(condition, value1, value2));
+            /* 105 */
+            this.criteria.add(new OrderExample.Criterion(condition, value1, value2));
+            /*     */
         }
 
-        public Criteria andIdIsNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andIdIsNull() {
+            /* 109 */
             addCriterion("id is null");
-            return (Criteria) this;
+            /* 110 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdIsNotNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andIdIsNotNull() {
+            /* 114 */
             addCriterion("id is not null");
-            return (Criteria) this;
+            /* 115 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdEqualTo(Integer value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andIdEqualTo(Integer value) {
+            /* 119 */
             addCriterion("id =", value, "id");
-            return (Criteria) this;
+            /* 120 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andIdNotEqualTo(Integer value) {
+            /* 124 */
             addCriterion("id <>", value, "id");
-            return (Criteria) this;
+            /* 125 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andIdGreaterThan(Integer value) {
+            /* 129 */
             addCriterion("id >", value, "id");
-            return (Criteria) this;
+            /* 130 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andIdGreaterThanOrEqualTo(Integer value) {
+            /* 134 */
             addCriterion("id >=", value, "id");
-            return (Criteria) this;
+            /* 135 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdLessThan(Integer value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andIdLessThan(Integer value) {
+            /* 139 */
             addCriterion("id <", value, "id");
-            return (Criteria) this;
+            /* 140 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andIdLessThanOrEqualTo(Integer value) {
+            /* 144 */
             addCriterion("id <=", value, "id");
-            return (Criteria) this;
+            /* 145 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdIn(List<Integer> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andIdIn(List<Integer> values) {
+            /* 149 */
             addCriterion("id in", values, "id");
-            return (Criteria) this;
+            /* 150 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andIdNotIn(List<Integer> values) {
+            /* 154 */
             addCriterion("id not in", values, "id");
-            return (Criteria) this;
+            /* 155 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andIdBetween(Integer value1, Integer value2) {
+            /* 159 */
             addCriterion("id between", value1, value2, "id");
-            return (Criteria) this;
+            /* 160 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andIdNotBetween(Integer value1, Integer value2) {
+            /* 164 */
             addCriterion("id not between", value1, value2, "id");
-            return (Criteria) this;
+            /* 165 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCustomerIdIsNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCustomerIdIsNull() {
+            /* 169 */
             addCriterion("customer_id is null");
-            return (Criteria) this;
+            /* 170 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCustomerIdIsNotNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCustomerIdIsNotNull() {
+            /* 174 */
             addCriterion("customer_id is not null");
-            return (Criteria) this;
+            /* 175 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCustomerIdEqualTo(Integer value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCustomerIdEqualTo(Integer value) {
+            /* 179 */
             addCriterion("customer_id =", value, "customerId");
-            return (Criteria) this;
+            /* 180 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCustomerIdNotEqualTo(Integer value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCustomerIdNotEqualTo(Integer value) {
+            /* 184 */
             addCriterion("customer_id <>", value, "customerId");
-            return (Criteria) this;
+            /* 185 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCustomerIdGreaterThan(Integer value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCustomerIdGreaterThan(Integer value) {
+            /* 189 */
             addCriterion("customer_id >", value, "customerId");
-            return (Criteria) this;
+            /* 190 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCustomerIdGreaterThanOrEqualTo(Integer value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCustomerIdGreaterThanOrEqualTo(Integer value) {
+            /* 194 */
             addCriterion("customer_id >=", value, "customerId");
-            return (Criteria) this;
+            /* 195 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCustomerIdLessThan(Integer value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCustomerIdLessThan(Integer value) {
+            /* 199 */
             addCriterion("customer_id <", value, "customerId");
-            return (Criteria) this;
+            /* 200 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCustomerIdLessThanOrEqualTo(Integer value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCustomerIdLessThanOrEqualTo(Integer value) {
+            /* 204 */
             addCriterion("customer_id <=", value, "customerId");
-            return (Criteria) this;
+            /* 205 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCustomerIdIn(List<Integer> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCustomerIdIn(List<Integer> values) {
+            /* 209 */
             addCriterion("customer_id in", values, "customerId");
-            return (Criteria) this;
+            /* 210 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCustomerIdNotIn(List<Integer> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCustomerIdNotIn(List<Integer> values) {
+            /* 214 */
             addCriterion("customer_id not in", values, "customerId");
-            return (Criteria) this;
+            /* 215 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCustomerIdBetween(Integer value1, Integer value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCustomerIdBetween(Integer value1, Integer value2) {
+            /* 219 */
             addCriterion("customer_id between", value1, value2, "customerId");
-            return (Criteria) this;
+            /* 220 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCustomerIdNotBetween(Integer value1, Integer value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCustomerIdNotBetween(Integer value1, Integer value2) {
+            /* 224 */
             addCriterion("customer_id not between", value1, value2, "customerId");
-            return (Criteria) this;
+            /* 225 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeIsNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCreateTimeIsNull() {
+            /* 229 */
             addCriterion("create_time is null");
-            return (Criteria) this;
+            /* 230 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeIsNotNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCreateTimeIsNotNull() {
+            /* 234 */
             addCriterion("create_time is not null");
-            return (Criteria) this;
+            /* 235 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeEqualTo(Date value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCreateTimeEqualTo(Date value) {
+            /* 239 */
             addCriterion("create_time =", value, "createTime");
-            return (Criteria) this;
+            /* 240 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeNotEqualTo(Date value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCreateTimeNotEqualTo(Date value) {
+            /* 244 */
             addCriterion("create_time <>", value, "createTime");
-            return (Criteria) this;
+            /* 245 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeGreaterThan(Date value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCreateTimeGreaterThan(Date value) {
+            /* 249 */
             addCriterion("create_time >", value, "createTime");
-            return (Criteria) this;
+            /* 250 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+            /* 254 */
             addCriterion("create_time >=", value, "createTime");
-            return (Criteria) this;
+            /* 255 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeLessThan(Date value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCreateTimeLessThan(Date value) {
+            /* 259 */
             addCriterion("create_time <", value, "createTime");
-            return (Criteria) this;
+            /* 260 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+            /* 264 */
             addCriterion("create_time <=", value, "createTime");
-            return (Criteria) this;
+            /* 265 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeIn(List<Date> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCreateTimeIn(List<Date> values) {
+            /* 269 */
             addCriterion("create_time in", values, "createTime");
-            return (Criteria) this;
+            /* 270 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeNotIn(List<Date> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCreateTimeNotIn(List<Date> values) {
+            /* 274 */
             addCriterion("create_time not in", values, "createTime");
-            return (Criteria) this;
+            /* 275 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCreateTimeBetween(Date value1, Date value2) {
+            /* 279 */
             addCriterion("create_time between", value1, value2, "createTime");
-            return (Criteria) this;
+            /* 280 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+            /* 284 */
             addCriterion("create_time not between", value1, value2, "createTime");
-            return (Criteria) this;
+            /* 285 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeIsNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateTimeIsNull() {
+            /* 289 */
             addCriterion("update_time is null");
-            return (Criteria) this;
+            /* 290 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeIsNotNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateTimeIsNotNull() {
+            /* 294 */
             addCriterion("update_time is not null");
-            return (Criteria) this;
+            /* 295 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeEqualTo(Date value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateTimeEqualTo(Date value) {
+            /* 299 */
             addCriterion("update_time =", value, "updateTime");
-            return (Criteria) this;
+            /* 300 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeNotEqualTo(Date value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateTimeNotEqualTo(Date value) {
+            /* 304 */
             addCriterion("update_time <>", value, "updateTime");
-            return (Criteria) this;
+            /* 305 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeGreaterThan(Date value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateTimeGreaterThan(Date value) {
+            /* 309 */
             addCriterion("update_time >", value, "updateTime");
-            return (Criteria) this;
+            /* 310 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeGreaterThanOrEqualTo(Date value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateTimeGreaterThanOrEqualTo(Date value) {
+            /* 314 */
             addCriterion("update_time >=", value, "updateTime");
-            return (Criteria) this;
+            /* 315 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeLessThan(Date value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateTimeLessThan(Date value) {
+            /* 319 */
             addCriterion("update_time <", value, "updateTime");
-            return (Criteria) this;
+            /* 320 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeLessThanOrEqualTo(Date value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateTimeLessThanOrEqualTo(Date value) {
+            /* 324 */
             addCriterion("update_time <=", value, "updateTime");
-            return (Criteria) this;
+            /* 325 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeIn(List<Date> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateTimeIn(List<Date> values) {
+            /* 329 */
             addCriterion("update_time in", values, "updateTime");
-            return (Criteria) this;
+            /* 330 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeNotIn(List<Date> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateTimeNotIn(List<Date> values) {
+            /* 334 */
             addCriterion("update_time not in", values, "updateTime");
-            return (Criteria) this;
+            /* 335 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeBetween(Date value1, Date value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateTimeBetween(Date value1, Date value2) {
+            /* 339 */
             addCriterion("update_time between", value1, value2, "updateTime");
-            return (Criteria) this;
+            /* 340 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
+            /* 344 */
             addCriterion("update_time not between", value1, value2, "updateTime");
-            return (Criteria) this;
+            /* 345 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserIsNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserIsNull() {
+            /* 349 */
             addCriterion("update_user is null");
-            return (Criteria) this;
+            /* 350 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserIsNotNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserIsNotNull() {
+            /* 354 */
             addCriterion("update_user is not null");
-            return (Criteria) this;
+            /* 355 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserEqualTo(String value) {
+            /* 359 */
             addCriterion("update_user =", value, "updateUser");
-            return (Criteria) this;
+            /* 360 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserNotEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserNotEqualTo(String value) {
+            /* 364 */
             addCriterion("update_user <>", value, "updateUser");
-            return (Criteria) this;
+            /* 365 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserGreaterThan(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserGreaterThan(String value) {
+            /* 369 */
             addCriterion("update_user >", value, "updateUser");
-            return (Criteria) this;
+            /* 370 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserGreaterThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserGreaterThanOrEqualTo(String value) {
+            /* 374 */
             addCriterion("update_user >=", value, "updateUser");
-            return (Criteria) this;
+            /* 375 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserLessThan(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserLessThan(String value) {
+            /* 379 */
             addCriterion("update_user <", value, "updateUser");
-            return (Criteria) this;
+            /* 380 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserLessThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserLessThanOrEqualTo(String value) {
+            /* 384 */
             addCriterion("update_user <=", value, "updateUser");
-            return (Criteria) this;
+            /* 385 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserLike(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserLike(String value) {
+            /* 389 */
             addCriterion("update_user like", value, "updateUser");
-            return (Criteria) this;
+            /* 390 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserNotLike(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserNotLike(String value) {
+            /* 394 */
             addCriterion("update_user not like", value, "updateUser");
-            return (Criteria) this;
+            /* 395 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserIn(List<String> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserIn(List<String> values) {
+            /* 399 */
             addCriterion("update_user in", values, "updateUser");
-            return (Criteria) this;
+            /* 400 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserNotIn(List<String> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserNotIn(List<String> values) {
+            /* 404 */
             addCriterion("update_user not in", values, "updateUser");
-            return (Criteria) this;
+            /* 405 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserBetween(String value1, String value2) {
+            /* 409 */
             addCriterion("update_user between", value1, value2, "updateUser");
-            return (Criteria) this;
+            /* 410 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserNotBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andUpdateUserNotBetween(String value1, String value2) {
+            /* 414 */
             addCriterion("update_user not between", value1, value2, "updateUser");
-            return (Criteria) this;
+            /* 415 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactIsNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactIsNull() {
+            /* 419 */
             addCriterion("contact is null");
-            return (Criteria) this;
+            /* 420 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactIsNotNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactIsNotNull() {
+            /* 424 */
             addCriterion("contact is not null");
-            return (Criteria) this;
+            /* 425 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEqualTo(String value) {
+            /* 429 */
             addCriterion("contact =", value, "contact");
-            return (Criteria) this;
+            /* 430 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactNotEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactNotEqualTo(String value) {
+            /* 434 */
             addCriterion("contact <>", value, "contact");
-            return (Criteria) this;
+            /* 435 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactGreaterThan(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactGreaterThan(String value) {
+            /* 439 */
             addCriterion("contact >", value, "contact");
-            return (Criteria) this;
+            /* 440 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactGreaterThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactGreaterThanOrEqualTo(String value) {
+            /* 444 */
             addCriterion("contact >=", value, "contact");
-            return (Criteria) this;
+            /* 445 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactLessThan(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactLessThan(String value) {
+            /* 449 */
             addCriterion("contact <", value, "contact");
-            return (Criteria) this;
+            /* 450 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactLessThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactLessThanOrEqualTo(String value) {
+            /* 454 */
             addCriterion("contact <=", value, "contact");
-            return (Criteria) this;
+            /* 455 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactLike(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactLike(String value) {
+            /* 459 */
             addCriterion("contact like", value, "contact");
-            return (Criteria) this;
+            /* 460 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactNotLike(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactNotLike(String value) {
+            /* 464 */
             addCriterion("contact not like", value, "contact");
-            return (Criteria) this;
+            /* 465 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactIn(List<String> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactIn(List<String> values) {
+            /* 469 */
             addCriterion("contact in", values, "contact");
-            return (Criteria) this;
+            /* 470 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactNotIn(List<String> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactNotIn(List<String> values) {
+            /* 474 */
             addCriterion("contact not in", values, "contact");
-            return (Criteria) this;
+            /* 475 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactBetween(String value1, String value2) {
+            /* 479 */
             addCriterion("contact between", value1, value2, "contact");
-            return (Criteria) this;
+            /* 480 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactNotBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactNotBetween(String value1, String value2) {
+            /* 484 */
             addCriterion("contact not between", value1, value2, "contact");
-            return (Criteria) this;
+            /* 485 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneIsNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneIsNull() {
+            /* 489 */
             addCriterion("contact_phone is null");
-            return (Criteria) this;
+            /* 490 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneIsNotNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneIsNotNull() {
+            /* 494 */
             addCriterion("contact_phone is not null");
-            return (Criteria) this;
+            /* 495 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneEqualTo(String value) {
+            /* 499 */
             addCriterion("contact_phone =", value, "contactPhone");
-            return (Criteria) this;
+            /* 500 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneNotEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneNotEqualTo(String value) {
+            /* 504 */
             addCriterion("contact_phone <>", value, "contactPhone");
-            return (Criteria) this;
+            /* 505 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneGreaterThan(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneGreaterThan(String value) {
+            /* 509 */
             addCriterion("contact_phone >", value, "contactPhone");
-            return (Criteria) this;
+            /* 510 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneGreaterThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneGreaterThanOrEqualTo(String value) {
+            /* 514 */
             addCriterion("contact_phone >=", value, "contactPhone");
-            return (Criteria) this;
+            /* 515 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneLessThan(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneLessThan(String value) {
+            /* 519 */
             addCriterion("contact_phone <", value, "contactPhone");
-            return (Criteria) this;
+            /* 520 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneLessThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneLessThanOrEqualTo(String value) {
+            /* 524 */
             addCriterion("contact_phone <=", value, "contactPhone");
-            return (Criteria) this;
+            /* 525 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneLike(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneLike(String value) {
+            /* 529 */
             addCriterion("contact_phone like", value, "contactPhone");
-            return (Criteria) this;
+            /* 530 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneNotLike(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneNotLike(String value) {
+            /* 534 */
             addCriterion("contact_phone not like", value, "contactPhone");
-            return (Criteria) this;
+            /* 535 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneIn(List<String> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneIn(List<String> values) {
+            /* 539 */
             addCriterion("contact_phone in", values, "contactPhone");
-            return (Criteria) this;
+            /* 540 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneNotIn(List<String> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneNotIn(List<String> values) {
+            /* 544 */
             addCriterion("contact_phone not in", values, "contactPhone");
-            return (Criteria) this;
+            /* 545 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneBetween(String value1, String value2) {
+            /* 549 */
             addCriterion("contact_phone between", value1, value2, "contactPhone");
-            return (Criteria) this;
+            /* 550 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactPhoneNotBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactPhoneNotBetween(String value1, String value2) {
+            /* 554 */
             addCriterion("contact_phone not between", value1, value2, "contactPhone");
-            return (Criteria) this;
+            /* 555 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailIsNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailIsNull() {
+            /* 559 */
             addCriterion("contact_email is null");
-            return (Criteria) this;
+            /* 560 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailIsNotNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailIsNotNull() {
+            /* 564 */
             addCriterion("contact_email is not null");
-            return (Criteria) this;
+            /* 565 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailEqualTo(String value) {
+            /* 569 */
             addCriterion("contact_email =", value, "contactEmail");
-            return (Criteria) this;
+            /* 570 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailNotEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailNotEqualTo(String value) {
+            /* 574 */
             addCriterion("contact_email <>", value, "contactEmail");
-            return (Criteria) this;
+            /* 575 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailGreaterThan(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailGreaterThan(String value) {
+            /* 579 */
             addCriterion("contact_email >", value, "contactEmail");
-            return (Criteria) this;
+            /* 580 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailGreaterThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailGreaterThanOrEqualTo(String value) {
+            /* 584 */
             addCriterion("contact_email >=", value, "contactEmail");
-            return (Criteria) this;
+            /* 585 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailLessThan(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailLessThan(String value) {
+            /* 589 */
             addCriterion("contact_email <", value, "contactEmail");
-            return (Criteria) this;
+            /* 590 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailLessThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailLessThanOrEqualTo(String value) {
+            /* 594 */
             addCriterion("contact_email <=", value, "contactEmail");
-            return (Criteria) this;
+            /* 595 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailLike(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailLike(String value) {
+            /* 599 */
             addCriterion("contact_email like", value, "contactEmail");
-            return (Criteria) this;
+            /* 600 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailNotLike(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailNotLike(String value) {
+            /* 604 */
             addCriterion("contact_email not like", value, "contactEmail");
-            return (Criteria) this;
+            /* 605 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailIn(List<String> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailIn(List<String> values) {
+            /* 609 */
             addCriterion("contact_email in", values, "contactEmail");
-            return (Criteria) this;
+            /* 610 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailNotIn(List<String> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailNotIn(List<String> values) {
+            /* 614 */
             addCriterion("contact_email not in", values, "contactEmail");
-            return (Criteria) this;
+            /* 615 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailBetween(String value1, String value2) {
+            /* 619 */
             addCriterion("contact_email between", value1, value2, "contactEmail");
-            return (Criteria) this;
+            /* 620 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContactEmailNotBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContactEmailNotBetween(String value1, String value2) {
+            /* 624 */
             addCriterion("contact_email not between", value1, value2, "contactEmail");
-            return (Criteria) this;
+            /* 625 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentIsNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentIsNull() {
+            /* 629 */
             addCriterion("content is null");
-            return (Criteria) this;
+            /* 630 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentIsNotNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentIsNotNull() {
+            /* 634 */
             addCriterion("content is not null");
-            return (Criteria) this;
+            /* 635 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentEqualTo(String value) {
+            /* 639 */
             addCriterion("content =", value, "content");
-            return (Criteria) this;
+            /* 640 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentNotEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentNotEqualTo(String value) {
+            /* 644 */
             addCriterion("content <>", value, "content");
-            return (Criteria) this;
+            /* 645 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentGreaterThan(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentGreaterThan(String value) {
+            /* 649 */
             addCriterion("content >", value, "content");
-            return (Criteria) this;
+            /* 650 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentGreaterThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentGreaterThanOrEqualTo(String value) {
+            /* 654 */
             addCriterion("content >=", value, "content");
-            return (Criteria) this;
+            /* 655 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentLessThan(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentLessThan(String value) {
+            /* 659 */
             addCriterion("content <", value, "content");
-            return (Criteria) this;
+            /* 660 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentLessThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentLessThanOrEqualTo(String value) {
+            /* 664 */
             addCriterion("content <=", value, "content");
-            return (Criteria) this;
+            /* 665 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentLike(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentLike(String value) {
+            /* 669 */
             addCriterion("content like", value, "content");
-            return (Criteria) this;
+            /* 670 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentNotLike(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentNotLike(String value) {
+            /* 674 */
             addCriterion("content not like", value, "content");
-            return (Criteria) this;
+            /* 675 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentIn(List<String> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentIn(List<String> values) {
+            /* 679 */
             addCriterion("content in", values, "content");
-            return (Criteria) this;
+            /* 680 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentNotIn(List<String> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentNotIn(List<String> values) {
+            /* 684 */
             addCriterion("content not in", values, "content");
-            return (Criteria) this;
+            /* 685 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentBetween(String value1, String value2) {
+            /* 689 */
             addCriterion("content between", value1, value2, "content");
-            return (Criteria) this;
+            /* 690 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentNotBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andContentNotBetween(String value1, String value2) {
+            /* 694 */
             addCriterion("content not between", value1, value2, "content");
-            return (Criteria) this;
+            /* 695 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackIsNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackIsNull() {
+            /* 699 */
             addCriterion("feedback is null");
-            return (Criteria) this;
+            /* 700 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackIsNotNull() {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackIsNotNull() {
+            /* 704 */
             addCriterion("feedback is not null");
-            return (Criteria) this;
+            /* 705 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackEqualTo(String value) {
+            /* 709 */
             addCriterion("feedback =", value, "feedback");
-            return (Criteria) this;
+            /* 710 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackNotEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackNotEqualTo(String value) {
+            /* 714 */
             addCriterion("feedback <>", value, "feedback");
-            return (Criteria) this;
+            /* 715 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackGreaterThan(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackGreaterThan(String value) {
+            /* 719 */
             addCriterion("feedback >", value, "feedback");
-            return (Criteria) this;
+            /* 720 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackGreaterThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackGreaterThanOrEqualTo(String value) {
+            /* 724 */
             addCriterion("feedback >=", value, "feedback");
-            return (Criteria) this;
+            /* 725 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackLessThan(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackLessThan(String value) {
+            /* 729 */
             addCriterion("feedback <", value, "feedback");
-            return (Criteria) this;
+            /* 730 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackLessThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackLessThanOrEqualTo(String value) {
+            /* 734 */
             addCriterion("feedback <=", value, "feedback");
-            return (Criteria) this;
+            /* 735 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackLike(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackLike(String value) {
+            /* 739 */
             addCriterion("feedback like", value, "feedback");
-            return (Criteria) this;
+            /* 740 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackNotLike(String value) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackNotLike(String value) {
+            /* 744 */
             addCriterion("feedback not like", value, "feedback");
-            return (Criteria) this;
+            /* 745 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackIn(List<String> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackIn(List<String> values) {
+            /* 749 */
             addCriterion("feedback in", values, "feedback");
-            return (Criteria) this;
+            /* 750 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackNotIn(List<String> values) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackNotIn(List<String> values) {
+            /* 754 */
             addCriterion("feedback not in", values, "feedback");
-            return (Criteria) this;
+            /* 755 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackBetween(String value1, String value2) {
+            /* 759 */
             addCriterion("feedback between", value1, value2, "feedback");
-            return (Criteria) this;
+            /* 760 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andFeedbackNotBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public OrderExample.Criteria andFeedbackNotBetween(String value1, String value2) {
+            /* 764 */
             addCriterion("feedback not between", value1, value2, "feedback");
-            return (Criteria) this;
+            /* 765 */
+            return (OrderExample.Criteria) this;
+            /*     */
         }
+        /*     */
     }
 
-    public static class Criteria extends GeneratedCriteria {
-
-        protected Criteria() {
-            super();
-        }
+    /*     */
+    /*     */
+    /*     */   public static class Criteria
+            /*     */ extends GeneratedCriteria {
     }
 
-    public static class Criterion {
-        private String condition;
+    /*     */
+    /*     */
+    /*     */   public static class Criterion
+            /*     */ {
+        /*     */     private String condition;
+        /*     */
+        /*     */     private Object value;
+        /*     */
+        /*     */     private Object secondValue;
+        /*     */
+        /*     */     private boolean noValue;
+        /*     */
+        /*     */     private boolean singleValue;
+        /*     */
+        /*     */     private boolean betweenValue;
+        /*     */
+        /*     */     private boolean listValue;
+        /*     */
+        /*     */     private String typeHandler;
 
-        private Object value;
-
-        private Object secondValue;
-
-        private boolean noValue;
-
-        private boolean singleValue;
-
-        private boolean betweenValue;
-
-        private boolean listValue;
-
-        private String typeHandler;
-
+        /*     */
+        /*     */
+        /*     */
         public String getCondition() {
-            return condition;
+            /* 794 */
+            return this.condition;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public Object getValue() {
-            return value;
+            /* 798 */
+            return this.value;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public Object getSecondValue() {
-            return secondValue;
+            /* 802 */
+            return this.secondValue;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public boolean isNoValue() {
-            return noValue;
+            /* 806 */
+            return this.noValue;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public boolean isSingleValue() {
-            return singleValue;
+            /* 810 */
+            return this.singleValue;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public boolean isBetweenValue() {
-            return betweenValue;
+            /* 814 */
+            return this.betweenValue;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public boolean isListValue() {
-            return listValue;
+            /* 818 */
+            return this.listValue;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public String getTypeHandler() {
-            return typeHandler;
+            /* 822 */
+            return this.typeHandler;
+            /*     */
         }
 
+        /*     */
+        /*     */
+        /*     */
         protected Criterion(String condition) {
-            super();
+            /* 827 */
             this.condition = condition;
+            /* 828 */
             this.typeHandler = null;
+            /* 829 */
             this.noValue = true;
+            /*     */
         }
 
+        /*     */
+        /*     */
+        /*     */
         protected Criterion(String condition, Object value, String typeHandler) {
-            super();
+            /* 834 */
             this.condition = condition;
+            /* 835 */
             this.value = value;
+            /* 836 */
             this.typeHandler = typeHandler;
-            if (value instanceof List<?>) {
+            /* 837 */
+            if (value instanceof List) {
+                /* 838 */
                 this.listValue = true;
+                /*     */
             } else {
+                /* 840 */
                 this.singleValue = true;
+                /*     */
             }
+            /*     */
         }
 
+        /*     */
+        /*     */
         protected Criterion(String condition, Object value) {
-            this(condition, value, null);
+            /* 845 */
+            this(condition, value, (String) null);
+            /*     */
         }
 
+        /*     */
+        /*     */
+        /*     */
         protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
-            super();
+            /* 850 */
             this.condition = condition;
+            /* 851 */
             this.value = value;
+            /* 852 */
             this.secondValue = secondValue;
+            /* 853 */
             this.typeHandler = typeHandler;
+            /* 854 */
             this.betweenValue = true;
+            /*     */
         }
 
+        /*     */
+        /*     */
         protected Criterion(String condition, Object value, Object secondValue) {
+            /* 858 */
             this(condition, value, secondValue, null);
+            /*     */
         }
+        /*     */
     }
+    /*     */
 }
+
+
+/* Location:              C:\Users\Administrator\Desktop\gov1\WEB-INF\classes\!\org\competition\domain\OrderExample.class
+ * Java compiler version: 8 (52.0)
+ * JD-Core Version:       1.1.3
+ */

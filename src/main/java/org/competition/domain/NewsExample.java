@@ -1,661 +1,1285 @@
+/*     */
 package org.competition.domain;
+/*     */
+/*     */
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+/*     */ import java.util.Date;
+/*     */ import java.util.List;
 
-public class NewsExample {
-    protected String orderByClause;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */ public class NewsExample
+        /*     */ {
+    /*     */   protected String orderByClause;
+    /*     */   protected boolean distinct;
+    /*  15 */   protected List<Criteria> oredCriteria = new ArrayList<>();
 
-    protected boolean distinct;
-
-    protected List<Criteria> oredCriteria;
-
-    public NewsExample() {
-        oredCriteria = new ArrayList<Criteria>();
-    }
-
+    /*     */
+    /*     */
+    /*     */
     public void setOrderByClause(String orderByClause) {
+        /*  19 */
         this.orderByClause = orderByClause;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public String getOrderByClause() {
-        return orderByClause;
+        /*  23 */
+        return this.orderByClause;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public void setDistinct(boolean distinct) {
+        /*  27 */
         this.distinct = distinct;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public boolean isDistinct() {
-        return distinct;
+        /*  31 */
+        return this.distinct;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public List<Criteria> getOredCriteria() {
-        return oredCriteria;
+        /*  35 */
+        return this.oredCriteria;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public void or(Criteria criteria) {
-        oredCriteria.add(criteria);
+        /*  39 */
+        this.oredCriteria.add(criteria);
+        /*     */
     }
 
+    /*     */
+    /*     */
     public Criteria or() {
+        /*  43 */
         Criteria criteria = createCriteriaInternal();
-        oredCriteria.add(criteria);
+        /*  44 */
+        this.oredCriteria.add(criteria);
+        /*  45 */
         return criteria;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public Criteria createCriteria() {
+        /*  49 */
         Criteria criteria = createCriteriaInternal();
-        if (oredCriteria.size() == 0) {
-            oredCriteria.add(criteria);
+        /*  50 */
+        if (this.oredCriteria.size() == 0) {
+            /*  51 */
+            this.oredCriteria.add(criteria);
+            /*     */
         }
+        /*  53 */
         return criteria;
+        /*     */
     }
 
+    /*     */
+    /*     */
     protected Criteria createCriteriaInternal() {
+        /*  57 */
         Criteria criteria = new Criteria();
+        /*  58 */
         return criteria;
+        /*     */
     }
 
+    /*     */
+    /*     */
     public void clear() {
-        oredCriteria.clear();
-        orderByClause = null;
-        distinct = false;
+        /*  62 */
+        this.oredCriteria.clear();
+        /*  63 */
+        this.orderByClause = null;
+        /*  64 */
+        this.distinct = false;
+        /*     */
     }
 
-    protected abstract static class GeneratedCriteria {
-        protected List<Criterion> criteria;
+    /*     */
+    /*     */
+    /*     */
+    /*     */
+    /*     */   protected static abstract class GeneratedCriteria
+            /*     */ {
+        /*  72 */     protected List<NewsExample.Criterion> criteria = new ArrayList<>();
 
-        protected GeneratedCriteria() {
-            super();
-            criteria = new ArrayList<Criterion>();
-        }
-
+        /*     */
+        /*     */
+        /*     */
         public boolean isValid() {
-            return criteria.size() > 0;
+            /*  76 */
+            return (this.criteria.size() > 0);
+            /*     */
         }
 
-        public List<Criterion> getAllCriteria() {
-            return criteria;
+        /*     */
+        /*     */
+        public List<NewsExample.Criterion> getAllCriteria() {
+            /*  80 */
+            return this.criteria;
+            /*     */
         }
 
-        public List<Criterion> getCriteria() {
-            return criteria;
+        /*     */
+        /*     */
+        public List<NewsExample.Criterion> getCriteria() {
+            /*  84 */
+            return this.criteria;
+            /*     */
         }
 
+        /*     */
+        /*     */
         protected void addCriterion(String condition) {
+            /*  88 */
             if (condition == null) {
+                /*  89 */
                 throw new RuntimeException("Value for condition cannot be null");
+                /*     */
             }
-            criteria.add(new Criterion(condition));
+            /*  91 */
+            this.criteria.add(new NewsExample.Criterion(condition));
+            /*     */
         }
 
+        /*     */
+        /*     */
         protected void addCriterion(String condition, Object value, String property) {
+            /*  95 */
             if (value == null) {
+                /*  96 */
                 throw new RuntimeException("Value for " + property + " cannot be null");
+                /*     */
             }
-            criteria.add(new Criterion(condition, value));
+            /*  98 */
+            this.criteria.add(new NewsExample.Criterion(condition, value));
+            /*     */
         }
 
+        /*     */
+        /*     */
         protected void addCriterion(String condition, Object value1, Object value2, String property) {
+            /* 102 */
             if (value1 == null || value2 == null) {
+                /* 103 */
                 throw new RuntimeException("Between values for " + property + " cannot be null");
+                /*     */
             }
-            criteria.add(new Criterion(condition, value1, value2));
+            /* 105 */
+            this.criteria.add(new NewsExample.Criterion(condition, value1, value2));
+            /*     */
         }
 
-        public Criteria andIdIsNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andIdIsNull() {
+            /* 109 */
             addCriterion("id is null");
-            return (Criteria) this;
+            /* 110 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdIsNotNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andIdIsNotNull() {
+            /* 114 */
             addCriterion("id is not null");
-            return (Criteria) this;
+            /* 115 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdEqualTo(Integer value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andIdEqualTo(Integer value) {
+            /* 119 */
             addCriterion("id =", value, "id");
-            return (Criteria) this;
+            /* 120 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andIdNotEqualTo(Integer value) {
+            /* 124 */
             addCriterion("id <>", value, "id");
-            return (Criteria) this;
+            /* 125 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andIdGreaterThan(Integer value) {
+            /* 129 */
             addCriterion("id >", value, "id");
-            return (Criteria) this;
+            /* 130 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andIdGreaterThanOrEqualTo(Integer value) {
+            /* 134 */
             addCriterion("id >=", value, "id");
-            return (Criteria) this;
+            /* 135 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdLessThan(Integer value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andIdLessThan(Integer value) {
+            /* 139 */
             addCriterion("id <", value, "id");
-            return (Criteria) this;
+            /* 140 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andIdLessThanOrEqualTo(Integer value) {
+            /* 144 */
             addCriterion("id <=", value, "id");
-            return (Criteria) this;
+            /* 145 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdIn(List<Integer> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andIdIn(List<Integer> values) {
+            /* 149 */
             addCriterion("id in", values, "id");
-            return (Criteria) this;
+            /* 150 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andIdNotIn(List<Integer> values) {
+            /* 154 */
             addCriterion("id not in", values, "id");
-            return (Criteria) this;
+            /* 155 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andIdBetween(Integer value1, Integer value2) {
+            /* 159 */
             addCriterion("id between", value1, value2, "id");
-            return (Criteria) this;
+            /* 160 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andIdNotBetween(Integer value1, Integer value2) {
+            /* 164 */
             addCriterion("id not between", value1, value2, "id");
-            return (Criteria) this;
+            /* 165 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleIsNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleIsNull() {
+            /* 169 */
             addCriterion("title is null");
-            return (Criteria) this;
+            /* 170 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleIsNotNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleIsNotNull() {
+            /* 174 */
             addCriterion("title is not null");
-            return (Criteria) this;
+            /* 175 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleEqualTo(String value) {
+            /* 179 */
             addCriterion("title =", value, "title");
-            return (Criteria) this;
+            /* 180 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleNotEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleNotEqualTo(String value) {
+            /* 184 */
             addCriterion("title <>", value, "title");
-            return (Criteria) this;
+            /* 185 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleGreaterThan(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleGreaterThan(String value) {
+            /* 189 */
             addCriterion("title >", value, "title");
-            return (Criteria) this;
+            /* 190 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleGreaterThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleGreaterThanOrEqualTo(String value) {
+            /* 194 */
             addCriterion("title >=", value, "title");
-            return (Criteria) this;
+            /* 195 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleLessThan(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleLessThan(String value) {
+            /* 199 */
             addCriterion("title <", value, "title");
-            return (Criteria) this;
+            /* 200 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleLessThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleLessThanOrEqualTo(String value) {
+            /* 204 */
             addCriterion("title <=", value, "title");
-            return (Criteria) this;
+            /* 205 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleLike(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleLike(String value) {
+            /* 209 */
             addCriterion("title like", value, "title");
-            return (Criteria) this;
+            /* 210 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleNotLike(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleNotLike(String value) {
+            /* 214 */
             addCriterion("title not like", value, "title");
-            return (Criteria) this;
+            /* 215 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleIn(List<String> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleIn(List<String> values) {
+            /* 219 */
             addCriterion("title in", values, "title");
-            return (Criteria) this;
+            /* 220 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleNotIn(List<String> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleNotIn(List<String> values) {
+            /* 224 */
             addCriterion("title not in", values, "title");
-            return (Criteria) this;
+            /* 225 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleBetween(String value1, String value2) {
+            /* 229 */
             addCriterion("title between", value1, value2, "title");
-            return (Criteria) this;
+            /* 230 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andTitleNotBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andTitleNotBetween(String value1, String value2) {
+            /* 234 */
             addCriterion("title not between", value1, value2, "title");
-            return (Criteria) this;
+            /* 235 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeIsNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateTimeIsNull() {
+            /* 239 */
             addCriterion("create_time is null");
-            return (Criteria) this;
+            /* 240 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeIsNotNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateTimeIsNotNull() {
+            /* 244 */
             addCriterion("create_time is not null");
-            return (Criteria) this;
+            /* 245 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeEqualTo(Date value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateTimeEqualTo(Date value) {
+            /* 249 */
             addCriterion("create_time =", value, "createTime");
-            return (Criteria) this;
+            /* 250 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeNotEqualTo(Date value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateTimeNotEqualTo(Date value) {
+            /* 254 */
             addCriterion("create_time <>", value, "createTime");
-            return (Criteria) this;
+            /* 255 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeGreaterThan(Date value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateTimeGreaterThan(Date value) {
+            /* 259 */
             addCriterion("create_time >", value, "createTime");
-            return (Criteria) this;
+            /* 260 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+            /* 264 */
             addCriterion("create_time >=", value, "createTime");
-            return (Criteria) this;
+            /* 265 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeLessThan(Date value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateTimeLessThan(Date value) {
+            /* 269 */
             addCriterion("create_time <", value, "createTime");
-            return (Criteria) this;
+            /* 270 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+            /* 274 */
             addCriterion("create_time <=", value, "createTime");
-            return (Criteria) this;
+            /* 275 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeIn(List<Date> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateTimeIn(List<Date> values) {
+            /* 279 */
             addCriterion("create_time in", values, "createTime");
-            return (Criteria) this;
+            /* 280 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeNotIn(List<Date> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateTimeNotIn(List<Date> values) {
+            /* 284 */
             addCriterion("create_time not in", values, "createTime");
-            return (Criteria) this;
+            /* 285 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateTimeBetween(Date value1, Date value2) {
+            /* 289 */
             addCriterion("create_time between", value1, value2, "createTime");
-            return (Criteria) this;
+            /* 290 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+            /* 294 */
             addCriterion("create_time not between", value1, value2, "createTime");
-            return (Criteria) this;
+            /* 295 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeIsNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateTimeIsNull() {
+            /* 299 */
             addCriterion("update_time is null");
-            return (Criteria) this;
+            /* 300 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeIsNotNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateTimeIsNotNull() {
+            /* 304 */
             addCriterion("update_time is not null");
-            return (Criteria) this;
+            /* 305 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeEqualTo(Date value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateTimeEqualTo(Date value) {
+            /* 309 */
             addCriterion("update_time =", value, "updateTime");
-            return (Criteria) this;
+            /* 310 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeNotEqualTo(Date value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateTimeNotEqualTo(Date value) {
+            /* 314 */
             addCriterion("update_time <>", value, "updateTime");
-            return (Criteria) this;
+            /* 315 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeGreaterThan(Date value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateTimeGreaterThan(Date value) {
+            /* 319 */
             addCriterion("update_time >", value, "updateTime");
-            return (Criteria) this;
+            /* 320 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeGreaterThanOrEqualTo(Date value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateTimeGreaterThanOrEqualTo(Date value) {
+            /* 324 */
             addCriterion("update_time >=", value, "updateTime");
-            return (Criteria) this;
+            /* 325 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeLessThan(Date value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateTimeLessThan(Date value) {
+            /* 329 */
             addCriterion("update_time <", value, "updateTime");
-            return (Criteria) this;
+            /* 330 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeLessThanOrEqualTo(Date value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateTimeLessThanOrEqualTo(Date value) {
+            /* 334 */
             addCriterion("update_time <=", value, "updateTime");
-            return (Criteria) this;
+            /* 335 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeIn(List<Date> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateTimeIn(List<Date> values) {
+            /* 339 */
             addCriterion("update_time in", values, "updateTime");
-            return (Criteria) this;
+            /* 340 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeNotIn(List<Date> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateTimeNotIn(List<Date> values) {
+            /* 344 */
             addCriterion("update_time not in", values, "updateTime");
-            return (Criteria) this;
+            /* 345 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeBetween(Date value1, Date value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateTimeBetween(Date value1, Date value2) {
+            /* 349 */
             addCriterion("update_time between", value1, value2, "updateTime");
-            return (Criteria) this;
+            /* 350 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
+            /* 354 */
             addCriterion("update_time not between", value1, value2, "updateTime");
-            return (Criteria) this;
+            /* 355 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserIsNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserIsNull() {
+            /* 359 */
             addCriterion("create_user is null");
-            return (Criteria) this;
+            /* 360 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserIsNotNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserIsNotNull() {
+            /* 364 */
             addCriterion("create_user is not null");
-            return (Criteria) this;
+            /* 365 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserEqualTo(String value) {
+            /* 369 */
             addCriterion("create_user =", value, "createUser");
-            return (Criteria) this;
+            /* 370 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserNotEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserNotEqualTo(String value) {
+            /* 374 */
             addCriterion("create_user <>", value, "createUser");
-            return (Criteria) this;
+            /* 375 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserGreaterThan(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserGreaterThan(String value) {
+            /* 379 */
             addCriterion("create_user >", value, "createUser");
-            return (Criteria) this;
+            /* 380 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserGreaterThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserGreaterThanOrEqualTo(String value) {
+            /* 384 */
             addCriterion("create_user >=", value, "createUser");
-            return (Criteria) this;
+            /* 385 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserLessThan(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserLessThan(String value) {
+            /* 389 */
             addCriterion("create_user <", value, "createUser");
-            return (Criteria) this;
+            /* 390 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserLessThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserLessThanOrEqualTo(String value) {
+            /* 394 */
             addCriterion("create_user <=", value, "createUser");
-            return (Criteria) this;
+            /* 395 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserLike(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserLike(String value) {
+            /* 399 */
             addCriterion("create_user like", value, "createUser");
-            return (Criteria) this;
+            /* 400 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserNotLike(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserNotLike(String value) {
+            /* 404 */
             addCriterion("create_user not like", value, "createUser");
-            return (Criteria) this;
+            /* 405 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserIn(List<String> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserIn(List<String> values) {
+            /* 409 */
             addCriterion("create_user in", values, "createUser");
-            return (Criteria) this;
+            /* 410 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserNotIn(List<String> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserNotIn(List<String> values) {
+            /* 414 */
             addCriterion("create_user not in", values, "createUser");
-            return (Criteria) this;
+            /* 415 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserBetween(String value1, String value2) {
+            /* 419 */
             addCriterion("create_user between", value1, value2, "createUser");
-            return (Criteria) this;
+            /* 420 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andCreateUserNotBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andCreateUserNotBetween(String value1, String value2) {
+            /* 424 */
             addCriterion("create_user not between", value1, value2, "createUser");
-            return (Criteria) this;
+            /* 425 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserIsNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserIsNull() {
+            /* 429 */
             addCriterion("update_user is null");
-            return (Criteria) this;
+            /* 430 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserIsNotNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserIsNotNull() {
+            /* 434 */
             addCriterion("update_user is not null");
-            return (Criteria) this;
+            /* 435 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserEqualTo(String value) {
+            /* 439 */
             addCriterion("update_user =", value, "updateUser");
-            return (Criteria) this;
+            /* 440 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserNotEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserNotEqualTo(String value) {
+            /* 444 */
             addCriterion("update_user <>", value, "updateUser");
-            return (Criteria) this;
+            /* 445 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserGreaterThan(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserGreaterThan(String value) {
+            /* 449 */
             addCriterion("update_user >", value, "updateUser");
-            return (Criteria) this;
+            /* 450 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserGreaterThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserGreaterThanOrEqualTo(String value) {
+            /* 454 */
             addCriterion("update_user >=", value, "updateUser");
-            return (Criteria) this;
+            /* 455 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserLessThan(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserLessThan(String value) {
+            /* 459 */
             addCriterion("update_user <", value, "updateUser");
-            return (Criteria) this;
+            /* 460 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserLessThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserLessThanOrEqualTo(String value) {
+            /* 464 */
             addCriterion("update_user <=", value, "updateUser");
-            return (Criteria) this;
+            /* 465 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserLike(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserLike(String value) {
+            /* 469 */
             addCriterion("update_user like", value, "updateUser");
-            return (Criteria) this;
+            /* 470 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserNotLike(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserNotLike(String value) {
+            /* 474 */
             addCriterion("update_user not like", value, "updateUser");
-            return (Criteria) this;
+            /* 475 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserIn(List<String> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserIn(List<String> values) {
+            /* 479 */
             addCriterion("update_user in", values, "updateUser");
-            return (Criteria) this;
+            /* 480 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserNotIn(List<String> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserNotIn(List<String> values) {
+            /* 484 */
             addCriterion("update_user not in", values, "updateUser");
-            return (Criteria) this;
+            /* 485 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserBetween(String value1, String value2) {
+            /* 489 */
             addCriterion("update_user between", value1, value2, "updateUser");
-            return (Criteria) this;
+            /* 490 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andUpdateUserNotBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andUpdateUserNotBetween(String value1, String value2) {
+            /* 494 */
             addCriterion("update_user not between", value1, value2, "updateUser");
-            return (Criteria) this;
+            /* 495 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentIsNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentIsNull() {
+            /* 499 */
             addCriterion("content is null");
-            return (Criteria) this;
+            /* 500 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentIsNotNull() {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentIsNotNull() {
+            /* 504 */
             addCriterion("content is not null");
-            return (Criteria) this;
+            /* 505 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentEqualTo(String value) {
+            /* 509 */
             addCriterion("content =", value, "content");
-            return (Criteria) this;
+            /* 510 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentNotEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentNotEqualTo(String value) {
+            /* 514 */
             addCriterion("content <>", value, "content");
-            return (Criteria) this;
+            /* 515 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentGreaterThan(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentGreaterThan(String value) {
+            /* 519 */
             addCriterion("content >", value, "content");
-            return (Criteria) this;
+            /* 520 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentGreaterThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentGreaterThanOrEqualTo(String value) {
+            /* 524 */
             addCriterion("content >=", value, "content");
-            return (Criteria) this;
+            /* 525 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentLessThan(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentLessThan(String value) {
+            /* 529 */
             addCriterion("content <", value, "content");
-            return (Criteria) this;
+            /* 530 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentLessThanOrEqualTo(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentLessThanOrEqualTo(String value) {
+            /* 534 */
             addCriterion("content <=", value, "content");
-            return (Criteria) this;
+            /* 535 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentLike(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentLike(String value) {
+            /* 539 */
             addCriterion("content like", value, "content");
-            return (Criteria) this;
+            /* 540 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentNotLike(String value) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentNotLike(String value) {
+            /* 544 */
             addCriterion("content not like", value, "content");
-            return (Criteria) this;
+            /* 545 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentIn(List<String> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentIn(List<String> values) {
+            /* 549 */
             addCriterion("content in", values, "content");
-            return (Criteria) this;
+            /* 550 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentNotIn(List<String> values) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentNotIn(List<String> values) {
+            /* 554 */
             addCriterion("content not in", values, "content");
-            return (Criteria) this;
+            /* 555 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentBetween(String value1, String value2) {
+            /* 559 */
             addCriterion("content between", value1, value2, "content");
-            return (Criteria) this;
+            /* 560 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
 
-        public Criteria andContentNotBetween(String value1, String value2) {
+        /*     */
+        /*     */
+        public NewsExample.Criteria andContentNotBetween(String value1, String value2) {
+            /* 564 */
             addCriterion("content not between", value1, value2, "content");
-            return (Criteria) this;
+            /* 565 */
+            return (NewsExample.Criteria) this;
+            /*     */
         }
+        /*     */
     }
 
-    public static class Criteria extends GeneratedCriteria {
-
-        protected Criteria() {
-            super();
-        }
+    /*     */
+    /*     */
+    /*     */   public static class Criteria
+            /*     */ extends GeneratedCriteria {
     }
 
-    public static class Criterion {
-        private String condition;
+    /*     */
+    /*     */
+    /*     */   public static class Criterion
+            /*     */ {
+        /*     */     private String condition;
+        /*     */
+        /*     */     private Object value;
+        /*     */
+        /*     */     private Object secondValue;
+        /*     */
+        /*     */     private boolean noValue;
+        /*     */
+        /*     */     private boolean singleValue;
+        /*     */
+        /*     */     private boolean betweenValue;
+        /*     */
+        /*     */     private boolean listValue;
+        /*     */
+        /*     */     private String typeHandler;
 
-        private Object value;
-
-        private Object secondValue;
-
-        private boolean noValue;
-
-        private boolean singleValue;
-
-        private boolean betweenValue;
-
-        private boolean listValue;
-
-        private String typeHandler;
-
+        /*     */
+        /*     */
+        /*     */
         public String getCondition() {
-            return condition;
+            /* 594 */
+            return this.condition;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public Object getValue() {
-            return value;
+            /* 598 */
+            return this.value;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public Object getSecondValue() {
-            return secondValue;
+            /* 602 */
+            return this.secondValue;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public boolean isNoValue() {
-            return noValue;
+            /* 606 */
+            return this.noValue;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public boolean isSingleValue() {
-            return singleValue;
+            /* 610 */
+            return this.singleValue;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public boolean isBetweenValue() {
-            return betweenValue;
+            /* 614 */
+            return this.betweenValue;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public boolean isListValue() {
-            return listValue;
+            /* 618 */
+            return this.listValue;
+            /*     */
         }
 
+        /*     */
+        /*     */
         public String getTypeHandler() {
-            return typeHandler;
+            /* 622 */
+            return this.typeHandler;
+            /*     */
         }
 
+        /*     */
+        /*     */
+        /*     */
         protected Criterion(String condition) {
-            super();
+            /* 627 */
             this.condition = condition;
+            /* 628 */
             this.typeHandler = null;
+            /* 629 */
             this.noValue = true;
+            /*     */
         }
 
+        /*     */
+        /*     */
+        /*     */
         protected Criterion(String condition, Object value, String typeHandler) {
-            super();
+            /* 634 */
             this.condition = condition;
+            /* 635 */
             this.value = value;
+            /* 636 */
             this.typeHandler = typeHandler;
-            if (value instanceof List<?>) {
+            /* 637 */
+            if (value instanceof List) {
+                /* 638 */
                 this.listValue = true;
+                /*     */
             } else {
+                /* 640 */
                 this.singleValue = true;
+                /*     */
             }
+            /*     */
         }
 
+        /*     */
+        /*     */
         protected Criterion(String condition, Object value) {
-            this(condition, value, null);
+            /* 645 */
+            this(condition, value, (String) null);
+            /*     */
         }
 
+        /*     */
+        /*     */
+        /*     */
         protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
-            super();
+            /* 650 */
             this.condition = condition;
+            /* 651 */
             this.value = value;
+            /* 652 */
             this.secondValue = secondValue;
+            /* 653 */
             this.typeHandler = typeHandler;
+            /* 654 */
             this.betweenValue = true;
+            /*     */
         }
 
+        /*     */
+        /*     */
         protected Criterion(String condition, Object value, Object secondValue) {
+            /* 658 */
             this(condition, value, secondValue, null);
+            /*     */
         }
+        /*     */
     }
+    /*     */
 }
+
+
+/* Location:              C:\Users\Administrator\Desktop\gov1\WEB-INF\classes\!\org\competition\domain\NewsExample.class
+ * Java compiler version: 8 (52.0)
+ * JD-Core Version:       1.1.3
+ */

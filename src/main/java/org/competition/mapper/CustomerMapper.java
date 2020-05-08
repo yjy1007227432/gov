@@ -6,25 +6,31 @@ import org.competition.domain.Customer;
 import org.competition.domain.CustomerExample;
 
 public interface CustomerMapper {
-    int countByExample(CustomerExample example);
-
-    int deleteByExample(CustomerExample example);
-
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(Customer record);
-
-    int insertSelective(Customer record);
-
-    List<Customer> selectByExample(CustomerExample example);
-
-    Customer selectByPrimaryKey(Integer id);
-
-    int updateByExampleSelective(@Param("record") Customer record, @Param("example") CustomerExample example);
-
-    int updateByExample(@Param("record") Customer record, @Param("example") CustomerExample example);
-
-    int updateByPrimaryKeySelective(Customer record);
-
-    int updateByPrimaryKey(Customer record);
+  int countByExample(CustomerExample paramCustomerExample);
+  
+  int deleteByExample(CustomerExample paramCustomerExample);
+  
+  int deleteByPrimaryKey(Integer paramInteger);
+  
+  int insert(Customer paramCustomer);
+  
+  int insertSelective(Customer paramCustomer);
+  
+  List<Customer> selectByExample(CustomerExample paramCustomerExample);
+  
+  Customer selectByPrimaryKey(Integer paramInteger);
+  
+  int updateByExampleSelective(@Param("record") Customer paramCustomer, @Param("example") CustomerExample paramCustomerExample);
+  
+  int updateByExample(@Param("record") Customer paramCustomer, @Param("example") CustomerExample paramCustomerExample);
+  
+  int updateByPrimaryKeySelective(Customer paramCustomer);
+  
+  int updateByPrimaryKey(Customer paramCustomer);
 }
+
+
+/* Location:              C:\Users\Administrator\Desktop\gov1\WEB-INF\classes\!\org\competition\mapper\CustomerMapper.class
+ * Java compiler version: 8 (52.0)
+ * JD-Core Version:       1.1.3
+ */

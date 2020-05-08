@@ -6,25 +6,31 @@ import org.competition.domain.Solution;
 import org.competition.domain.SolutionExample;
 
 public interface SolutionMapper {
-    int countByExample(SolutionExample example);
-
-    int deleteByExample(SolutionExample example);
-
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(Solution record);
-
-    int insertSelective(Solution record);
-
-    List<Solution> selectByExample(SolutionExample example);
-
-    Solution selectByPrimaryKey(Integer id);
-
-    int updateByExampleSelective(@Param("record") Solution record, @Param("example") SolutionExample example);
-
-    int updateByExample(@Param("record") Solution record, @Param("example") SolutionExample example);
-
-    int updateByPrimaryKeySelective(Solution record);
-
-    int updateByPrimaryKey(Solution record);
+  int countByExample(SolutionExample paramSolutionExample);
+  
+  int deleteByExample(SolutionExample paramSolutionExample);
+  
+  int deleteByPrimaryKey(Integer paramInteger);
+  
+  int insert(Solution paramSolution);
+  
+  int insertSelective(Solution paramSolution);
+  
+  List<Solution> selectByExample(SolutionExample paramSolutionExample);
+  
+  Solution selectByPrimaryKey(Integer paramInteger);
+  
+  int updateByExampleSelective(@Param("record") Solution paramSolution, @Param("example") SolutionExample paramSolutionExample);
+  
+  int updateByExample(@Param("record") Solution paramSolution, @Param("example") SolutionExample paramSolutionExample);
+  
+  int updateByPrimaryKeySelective(Solution paramSolution);
+  
+  int updateByPrimaryKey(Solution paramSolution);
 }
+
+
+/* Location:              C:\Users\Administrator\Desktop\gov1\WEB-INF\classes\!\org\competition\mapper\SolutionMapper.class
+ * Java compiler version: 8 (52.0)
+ * JD-Core Version:       1.1.3
+ */

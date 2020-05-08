@@ -6,25 +6,31 @@ import org.competition.domain.Product;
 import org.competition.domain.ProductExample;
 
 public interface ProductMapper {
-    int countByExample(ProductExample example);
-
-    int deleteByExample(ProductExample example);
-
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(Product record);
-
-    int insertSelective(Product record);
-
-    List<Product> selectByExample(ProductExample example);
-
-    Product selectByPrimaryKey(Integer id);
-
-    int updateByExampleSelective(@Param("record") Product record, @Param("example") ProductExample example);
-
-    int updateByExample(@Param("record") Product record, @Param("example") ProductExample example);
-
-    int updateByPrimaryKeySelective(Product record);
-
-    int updateByPrimaryKey(Product record);
+  int countByExample(ProductExample paramProductExample);
+  
+  int deleteByExample(ProductExample paramProductExample);
+  
+  int deleteByPrimaryKey(Integer paramInteger);
+  
+  int insert(Product paramProduct);
+  
+  int insertSelective(Product paramProduct);
+  
+  List<Product> selectByExample(ProductExample paramProductExample);
+  
+  Product selectByPrimaryKey(Integer paramInteger);
+  
+  int updateByExampleSelective(@Param("record") Product paramProduct, @Param("example") ProductExample paramProductExample);
+  
+  int updateByExample(@Param("record") Product paramProduct, @Param("example") ProductExample paramProductExample);
+  
+  int updateByPrimaryKeySelective(Product paramProduct);
+  
+  int updateByPrimaryKey(Product paramProduct);
 }
+
+
+/* Location:              C:\Users\Administrator\Desktop\gov1\WEB-INF\classes\!\org\competition\mapper\ProductMapper.class
+ * Java compiler version: 8 (52.0)
+ * JD-Core Version:       1.1.3
+ */

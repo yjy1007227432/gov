@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "log4j.logger.com.ibatis.common.jdbc.SimpleDataSource",
+      "type": "java.lang.String",
+      "description": "Description for log4j.logger.com.ibatis.common.jdbc.SimpleDataSource."
+  }
+] }

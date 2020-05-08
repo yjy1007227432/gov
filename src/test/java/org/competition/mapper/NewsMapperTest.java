@@ -5,11 +5,9 @@ import org.competition.dao.IdAndName;
 import org.competition.dao.OrderPojo;
 import org.competition.domain.News;
 import org.competition.domain.Order;
+import org.competition.domain.Solution;
 import org.competition.domain.User;
-import org.competition.service.CustomerService;
-import org.competition.service.NewsService;
-import org.competition.service.OrderService;
-import org.competition.service.UserService;
+import org.competition.service.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
@@ -47,19 +45,15 @@ public class NewsMapperTest {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ResourcevpsService resourcevpsService;
 
-//    @Test
-//    public void test2(){
-//        News news1 = new News();
-//        news1.setTitle("111");
-//        news1.setContent("222");
-//        news1.setCreateUser("yjy");
-//        news1.setId(1);
-//        news1.setCreateTime(Date.from(Instant.now()));
-//        news1.setUpdateTime(Date.from(Instant.now()));
-//        news1.setUpdateUser("yjy");
-//        newsMapper.insert(news1);
-//    }
+
+    @Autowired
+    private SolutionService solutionService;
+
+
+
 
 //    @Test
 //    public void selectIdAndName() {
@@ -95,7 +89,6 @@ public class NewsMapperTest {
     @Test
     public void newsTest(){
         userService.addUser("1","1","yjy","123","123","1");
-
     }
 
 
