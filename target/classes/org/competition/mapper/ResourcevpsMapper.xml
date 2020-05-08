@@ -104,6 +104,17 @@
     from resourcevps
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByResourcevps" resultMap="BaseResultMap" parameterType="org.competition.domain.Resourcevps" >
+    select <include refid="Base_Column_List"/> from resourcevps
+    <where>
+      <if test="orderId != null">
+        order_id = #{orderId}
+      </if>
+    </where>
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from resourcevps
     where id = #{id,jdbcType=INTEGER}

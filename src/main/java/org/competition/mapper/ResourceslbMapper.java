@@ -18,6 +18,8 @@ public interface ResourceslbMapper {
 
     List<Resourceslb> selectByExample(ResourceslbExample example);
 
+    List<Resourceslb> selectByResourceslb(Resourceslb example);
+
     Resourceslb selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Resourceslb record, @Param("example") ResourceslbExample example);

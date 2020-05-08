@@ -2,6 +2,7 @@ package org.competition.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.competition.domain.Resourceslb;
 import org.competition.domain.Resourcevps;
 import org.competition.domain.ResourcevpsExample;
 
@@ -17,6 +18,8 @@ public interface ResourcevpsMapper {
     int insertSelective(Resourcevps record);
 
     List<Resourcevps> selectByExample(ResourcevpsExample example);
+
+    List<Resourcevps> selectByResourcevps(Resourcevps example);
 
     Resourcevps selectByPrimaryKey(Integer id);
 

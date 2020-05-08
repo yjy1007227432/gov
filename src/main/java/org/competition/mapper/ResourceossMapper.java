@@ -2,6 +2,7 @@ package org.competition.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.competition.domain.Dictvalue;
 import org.competition.domain.Resourceoss;
 import org.competition.domain.ResourceossExample;
 
@@ -17,6 +18,8 @@ public interface ResourceossMapper {
     int insertSelective(Resourceoss record);
 
     List<Resourceoss> selectByExample(ResourceossExample example);
+
+    List<Resourceoss> selectByResourceoss(Resourceoss resourceoss);
 
     Resourceoss selectByPrimaryKey(Integer id);
 

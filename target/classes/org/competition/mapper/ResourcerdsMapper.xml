@@ -95,6 +95,17 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <select id="selectByResourcerds" resultMap="BaseResultMap" parameterType="org.competition.domain.Resourcerds" >
+    select <include refid="Base_Column_List"/> from resourcerds
+    <where>
+      <if test="orderId != null">
+        order_id = #{orderId}
+      </if>
+    </where>
+  </select>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

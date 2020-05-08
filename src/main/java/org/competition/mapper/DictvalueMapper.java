@@ -18,6 +18,8 @@ public interface DictvalueMapper {
 
     List<Dictvalue> selectByExample(DictvalueExample example);
 
+    List<Dictvalue> selectByDictvalue(Dictvalue dictvalue);
+
     Dictvalue selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Dictvalue record, @Param("example") DictvalueExample example);

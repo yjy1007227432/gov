@@ -76,12 +76,43 @@
     select *
     from dictvalue
   </select>
+
+
+  <select id="selectByDictvalue" resultMap="BaseResultMap" parameterType="org.competition.domain.Dictvalue" >
+    select <include refid="Base_Column_List"/> from dictvalue
+    <where>
+      <if test="table_name != null">
+        table_name = #{tableName}
+      </if>
+      <if test="column_name != null">
+        and column_name = #{columnName}
+      </if>
+      <if test="update_time != null">
+        and update_time = #{updateTime}
+      </if>
+      <if test="key != null">
+        and key = #{key}
+      </if>
+      <if test="value != null">
+        and value = #{key}
+      </if>
+      <if test="backup1 != null">
+        and backup1 = #{backup1}
+      </if>
+      <if test="backup2 != null">
+        and backup2 = #{backup2}
+      </if>
+    </where>
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from dictvalue
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from dictvalue
     where id = #{id,jdbcType=INTEGER}

@@ -2,6 +2,7 @@ package org.competition.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.competition.domain.Resourceoss;
 import org.competition.domain.Resourcerds;
 import org.competition.domain.ResourcerdsExample;
 
@@ -17,6 +18,9 @@ public interface ResourcerdsMapper {
     int insertSelective(Resourcerds record);
 
     List<Resourcerds> selectByExample(ResourcerdsExample example);
+
+    List<Resourcerds> selectByResourcerds(Resourcerds Resourcerds);
+
 
     Resourcerds selectByPrimaryKey(Integer id);
 
