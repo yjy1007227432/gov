@@ -175,8 +175,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
         /*     */
     }
 
-    /*     */
-    /*     */
     @RequestMapping({"/list"})
     /*     */ public List<OrderCustomer> ListOrder() {
         /* 144 */
