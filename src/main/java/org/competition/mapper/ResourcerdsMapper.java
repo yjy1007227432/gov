@@ -7,7 +7,7 @@ import org.competition.domain.Resourcerds;
 import org.competition.domain.ResourcerdsExample;
 
 public interface ResourcerdsMapper {
-    int countByExample(ResourcerdsExample example);
+    int countByExample(Resourcerds resourcerds);
 
     int deleteByExample(ResourcerdsExample example);
 

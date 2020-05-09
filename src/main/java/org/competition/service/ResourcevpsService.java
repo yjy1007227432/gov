@@ -2,9 +2,7 @@ package org.competition.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.competition.domain.Resourcerds;
-import org.competition.domain.Resourceslb;
-import org.competition.domain.Resourcevps;
+import org.competition.domain.*;
 import org.competition.mapper.ResourcevpsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -140,6 +138,33 @@ public class ResourcevpsService {
         }
         return result;
     }
+
+    @RequestMapping({"/count"})
+    public Integer count(int order_id) {
+
+        int result = 0;
+        Resourcevps resourcevps = new Resourcevps().setOrderId(order_id);
+        try {
+            result = this.resourcevpsMapper.countByExample(resourcevps);
+        } catch (Exception e) {
+            LOGGER.error("resourcevpsMapper.countByExample 查询数据失败", e);
+        }
+        return result;
+    }
+
+    @RequestMapping({"/deletebyorderid"})
+    public Integer delete(int order_id) {
+        ResourcevpsExample example = new ResourcevpsExample();
+        example.createCriteria().andOrderIdEqualTo(order_id);
+        int result = 0;
+        try {
+            result = this.resourcevpsMapper.deleteByExample(example);
+        } catch (Exception e) {
+            LOGGER.error("resourcevpsMapper.deleteByExample 删除数据失败", e);
+        }
+        return result;
+    }
+
 
 
 }

@@ -3,9 +3,7 @@ package org.competition.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.competition.domain.Resourceoss;
-import org.competition.domain.Resourcerds;
-import org.competition.domain.Resourcevps;
+import org.competition.domain.*;
 import org.competition.mapper.OrderMapper;
 import org.competition.mapper.ResourcerdsMapper;
 import org.competition.mapper.ResourcevpsMapper;
@@ -136,5 +134,30 @@ public class ResourcerdsService {
         return result;
     }
 
+    @RequestMapping({"/count"})
+    public Integer count(int order_id) {
+
+        int result = 0;
+        Resourcerds resourcerds = new Resourcerds().setOrderId(order_id);
+        try {
+            result = this.resourcerdsMapper.countByExample(resourcerds);
+        } catch (Exception e) {
+            LOGGER.error("resourcerdsMapper.countByExample 查询数据失败", e);
+        }
+        return result;
+    }
+
+    @RequestMapping({"/deletebyorderid"})
+    public Integer delete(int order_id) {
+        ResourcerdsExample example = new ResourcerdsExample();
+        example.createCriteria().andOrderIdEqualTo(order_id);
+        int result = 0;
+        try {
+            result = this.resourcerdsMapper.deleteByExample(example);
+        } catch (Exception e) {
+            LOGGER.error("resourcerdsMapper.deleteByExample 删除数据失败", e);
+        }
+        return result;
+    }
 
 }

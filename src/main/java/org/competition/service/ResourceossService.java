@@ -3,10 +3,7 @@ package org.competition.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.competition.domain.Dictvalue;
-import org.competition.domain.Resourceoss;
-import org.competition.domain.Resourcevps;
-import org.competition.domain.Solution;
+import org.competition.domain.*;
 import org.competition.mapper.ResourceossMapper;
 import org.competition.mapper.ResourcerdsMapper;
 import org.competition.mapper.ResourcevpsMapper;
@@ -126,6 +123,32 @@ public class ResourceossService {
         }
         if (Objects.equals(Integer.valueOf(result), Integer.valueOf(0))) {
             LOGGER.error("无法查询到需要更新的数据");
+        }
+        return result;
+    }
+
+    @RequestMapping({"/count"})
+    public Integer count(int order_id) {
+
+        int result = 0;
+        Resourceoss resourceoss = new Resourceoss().setOrderId(order_id);
+        try {
+            result = this.resourceossMapper.countByExample(resourceoss);
+        } catch (Exception e) {
+            LOGGER.error("resourceossMapper.countByExample 查询数据失败", e);
+        }
+        return result;
+    }
+
+    @RequestMapping({"/deletebyorderid"})
+    public Integer delete(int order_id) {
+        ResourceossExample example = new ResourceossExample();
+        example.createCriteria().andOrderIdEqualTo(order_id);
+        int result = 0;
+        try {
+            result = this.resourceossMapper.deleteByExample(example);
+        } catch (Exception e) {
+            LOGGER.error("resourceossMapper.deleteByExample 删除数据失败", e);
         }
         return result;
     }

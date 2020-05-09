@@ -7,7 +7,7 @@ import org.competition.domain.Resourcevps;
 import org.competition.domain.ResourcevpsExample;
 
 public interface ResourcevpsMapper {
-    int countByExample(ResourcevpsExample example);
+    int countByExample(Resourcevps example);
 
     int deleteByExample(ResourcevpsExample example);
 

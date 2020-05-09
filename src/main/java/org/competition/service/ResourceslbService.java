@@ -2,9 +2,7 @@ package org.competition.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.competition.domain.Resourcerds;
-import org.competition.domain.Resourceslb;
-import org.competition.domain.Resourcevps;
+import org.competition.domain.*;
 import org.competition.mapper.ResourceslbMapper;
 import org.competition.mapper.ResourcevpsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -133,6 +131,34 @@ public class ResourceslbService {
         }
         return result;
     }
+
+
+    @RequestMapping({"/count"})
+    public Integer count(int order_id) {
+
+        int result = 0;
+        Resourceslb resourceslb = new Resourceslb().setOrderId(order_id);
+        try {
+            result = this.resourceslbMapper.countByExample(resourceslb);
+        } catch (Exception e) {
+            LOGGER.error("resourceslbMapper.countByExample 查询数据失败", e);
+        }
+        return result;
+    }
+
+    @RequestMapping({"/deletebyorderid"})
+    public Integer delete(int order_id) {
+        ResourceslbExample example = new ResourceslbExample();
+        example.createCriteria().andOrderIdEqualTo(order_id);
+        int result = 0;
+        try {
+            result = this.resourceslbMapper.deleteByExample(example);
+        } catch (Exception e) {
+            LOGGER.error("resourceslbMapper.deleteByExample 删除数据失败", e);
+        }
+        return result;
+    }
+
 
 
 }

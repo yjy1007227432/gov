@@ -7,7 +7,7 @@ import org.competition.domain.Resourceoss;
 import org.competition.domain.ResourceossExample;
 
 public interface ResourceossMapper {
-    int countByExample(ResourceossExample example);
+    int countByExample(Resourceoss resourceoss);
 
     int deleteByExample(ResourceossExample example);
 

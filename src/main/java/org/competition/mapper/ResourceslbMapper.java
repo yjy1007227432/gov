@@ -6,7 +6,7 @@ import org.competition.domain.Resourceslb;
 import org.competition.domain.ResourceslbExample;
 
 public interface ResourceslbMapper {
-    int countByExample(ResourceslbExample example);
+    int countByExample(Resourceslb resourceslb);
 
     int deleteByExample(ResourceslbExample example);
 
