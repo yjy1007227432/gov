@@ -1,2 +1,3 @@
 org\competition\mapper\NewsMapperTest.class
 org\competition\mapper\AsciiTest.class
+org\competition\service\ResourcevpsServiceTest.class

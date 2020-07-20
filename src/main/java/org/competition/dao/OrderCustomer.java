@@ -52,8 +52,3 @@ import org.competition.domain.Order;
     /*    */
 }
 
-
-/* Location:              C:\Users\Administrator\Desktop\gov1\WEB-INF\classes\!\org\competition\dao\OrderCustomer.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */

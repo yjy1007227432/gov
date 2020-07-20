@@ -17,6 +17,8 @@ public interface OrderMapper {
   int insertSelective(Order paramOrder);
   
   List<Order> selectByExample(OrderExample paramOrderExample);
+
+  List<Order> selectByExample2(OrderExample paramOrderExample);
   
   Order selectByPrimaryKey(Integer paramInteger);
   

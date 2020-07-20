@@ -36,7 +36,7 @@ public class Resourceslb {
 
     private String ipaddress;
 
-    private Integer port;
+    private String port;
 
     private Integer quantity;
 

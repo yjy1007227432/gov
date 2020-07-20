@@ -3,6 +3,7 @@ package org.competition.mapper;
 import org.competition.CompetitionServerApplication;
 import org.competition.dao.IdAndName;
 import org.competition.dao.OrderPojo;
+import org.competition.dao.OrderTaskResult;
 import org.competition.domain.News;
 import org.competition.domain.Order;
 import org.competition.domain.Solution;
@@ -53,15 +54,20 @@ public class NewsMapperTest {
     private SolutionService solutionService;
 
 
+    @Autowired
+    private OrderTaskService orderTaskService;
 
 
-//    @Test
-//    public void selectIdAndName() {
-//        List<IdAndName> result = new ArrayList<>();
-//        result = customerService.selectIdAndName();
-//
-//        System.out.println();
-//    }
+
+
+    @Test
+    public void selectIdAndName() {
+//        orderTaskService.updateOrderTask(88,90,null,null,
+//                null,null,null,null,null,null,null,null,null);
+
+        orderTaskService.deleteById(88);
+        System.out.println();
+    }
 
 //    @Test
 //    public void testDate(){

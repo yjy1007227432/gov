@@ -47,10 +47,6 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table schema="" tableName="resourceoss"></table>
-        <table schema="" tableName="dictvalue"></table>
-        <table schema="" tableName="resourcerds"></table>
-        <table schema="" tableName="resourceslb"></table>
-        <table schema="" tableName="resourcevps"></table>
+        <table schema="" tableName="ordertask"></table>
     </context>
 </generatorConfiguration>

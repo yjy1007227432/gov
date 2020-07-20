@@ -11,6 +11,13 @@
     <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR" />
     <result column="contact_email" property="contactEmail" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="kcontact" property="kcontact" jdbcType="VARCHAR" />
+    <result column="kcontact_phone" property="kcontactPhone" jdbcType="VARCHAR" />
+    <result column="kcontact_email" property="kcontactEmail" jdbcType="VARCHAR" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="finish_date" property="finishDate" jdbcType="TIMESTAMP" />
     <result column="feedback" property="feedback" jdbcType="VARCHAR" />
     <result column="queue_id" property="queueId" jdbcType="INTEGER" />
     <result column="backup1" property="backup1" jdbcType="VARCHAR" />
@@ -84,6 +91,23 @@
     from `order`
       order by queue_id asc, update_time desc
   </select>
+
+  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="org.competition.domain.OrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from `order`
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select *
     from `order`

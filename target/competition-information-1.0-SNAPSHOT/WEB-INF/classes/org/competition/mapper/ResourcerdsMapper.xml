@@ -95,6 +95,17 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <select id="selectByResourcerds" resultMap="BaseResultMap" parameterType="org.competition.domain.Resourcerds" >
+    select <include refid="Base_Column_List"/> from resourcerds
+    <where>
+      <if test="orderId != null">
+        order_id = #{orderId}
+      </if>
+    </where>
+  </select>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -228,11 +239,13 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.competition.domain.ResourcerdsExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="org.competition.domain.Resourcerds" resultType="java.lang.Integer" >
     select count(*) from resourcerds
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
+    <where>
+      <if test="orderId != null">
+        order_id = #{orderId}
+      </if>
+    </where>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
     update resourcerds

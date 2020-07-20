@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.competition.mapper.OrdertaskMapper" >
+  <resultMap id="BaseResultMap" type="org.competition.domain.Ordertask" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="resource_id" property="resourceId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="task_action" property="taskAction" jdbcType="VARCHAR" />
+    <result column="task_type" property="taskType" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="attachment" property="attachment" jdbcType="VARCHAR" />
+    <result column="backup" property="backup" jdbcType="VARCHAR" />
+    <result column="keyword1" property="keyword1" jdbcType="VARCHAR" />
+    <result column="keyword2" property="keyword2" jdbcType="VARCHAR" />
+    <result column="keyword3" property="keyword3" jdbcType="VARCHAR" />
+    <result column="keyword4" property="keyword4" jdbcType="VARCHAR" />
+    <result column="keyword5" property="keyword5" jdbcType="VARCHAR" />
+    <result column="keyword6" property="keyword6" jdbcType="VARCHAR" />
+    <result column="keyword7" property="keyword7" jdbcType="VARCHAR" />
+    <result column="keyword8" property="keyword8" jdbcType="VARCHAR" />
+    <result column="keyword9" property="keyword9" jdbcType="VARCHAR" />
+    <result column="keyword10" property="keyword10" jdbcType="VARCHAR" />
+    <result column="keyword11" property="keyword11" jdbcType="VARCHAR" />
+    <result column="keyword12" property="keyword12" jdbcType="VARCHAR" />
+    <result column="keyword13" property="keyword13" jdbcType="VARCHAR" />
+    <result column="keyword14" property="keyword14" jdbcType="VARCHAR" />
+    <result column="keyword15" property="keyword15" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, customer_id, order_id, resource_id, create_time, update_time, update_user, task_action, 
+    task_type, status, name, quantity, attachment, backup, keyword1, keyword2, keyword3, 
+    keyword4, keyword5, keyword6, keyword7, keyword8, keyword9, keyword10, keyword11, 
+    keyword12, keyword13, keyword14, keyword15
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.competition.domain.OrdertaskExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ordertask
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ordertask
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ordertask
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.competition.domain.OrdertaskExample" >
+    delete from ordertask
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.competition.domain.Ordertask" >
+    insert into ordertask (id, customer_id, order_id, 
+      resource_id, create_time, update_time, 
+      update_user, task_action, task_type, 
+      status, name, quantity, 
+      attachment, backup, keyword1, 
+      keyword2, keyword3, keyword4, 
+      keyword5, keyword6, keyword7, 
+      keyword8, keyword9, keyword10, 
+      keyword11, keyword12, keyword13, 
+      keyword14, keyword15)
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, 
+      #{resourceId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updateUser,jdbcType=VARCHAR}, #{taskAction,jdbcType=VARCHAR}, #{taskType,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, 
+      #{attachment,jdbcType=VARCHAR}, #{backup,jdbcType=VARCHAR}, #{keyword1,jdbcType=VARCHAR}, 
+      #{keyword2,jdbcType=VARCHAR}, #{keyword3,jdbcType=VARCHAR}, #{keyword4,jdbcType=VARCHAR}, 
+      #{keyword5,jdbcType=VARCHAR}, #{keyword6,jdbcType=VARCHAR}, #{keyword7,jdbcType=VARCHAR}, 
+      #{keyword8,jdbcType=VARCHAR}, #{keyword9,jdbcType=VARCHAR}, #{keyword10,jdbcType=VARCHAR}, 
+      #{keyword11,jdbcType=VARCHAR}, #{keyword12,jdbcType=VARCHAR}, #{keyword13,jdbcType=VARCHAR}, 
+      #{keyword14,jdbcType=VARCHAR}, #{keyword15,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.competition.domain.Ordertask" >
+    insert into ordertask
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="taskAction != null" >
+        task_action,
+      </if>
+      <if test="taskType != null" >
+        task_type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="attachment != null" >
+        attachment,
+      </if>
+      <if test="backup != null" >
+        backup,
+      </if>
+      <if test="keyword1 != null" >
+        keyword1,
+      </if>
+      <if test="keyword2 != null" >
+        keyword2,
+      </if>
+      <if test="keyword3 != null" >
+        keyword3,
+      </if>
+      <if test="keyword4 != null" >
+        keyword4,
+      </if>
+      <if test="keyword5 != null" >
+        keyword5,
+      </if>
+      <if test="keyword6 != null" >
+        keyword6,
+      </if>
+      <if test="keyword7 != null" >
+        keyword7,
+      </if>
+      <if test="keyword8 != null" >
+        keyword8,
+      </if>
+      <if test="keyword9 != null" >
+        keyword9,
+      </if>
+      <if test="keyword10 != null" >
+        keyword10,
+      </if>
+      <if test="keyword11 != null" >
+        keyword11,
+      </if>
+      <if test="keyword12 != null" >
+        keyword12,
+      </if>
+      <if test="keyword13 != null" >
+        keyword13,
+      </if>
+      <if test="keyword14 != null" >
+        keyword14,
+      </if>
+      <if test="keyword15 != null" >
+        keyword15,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="taskAction != null" >
+        #{taskAction,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null" >
+        #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="attachment != null" >
+        #{attachment,jdbcType=VARCHAR},
+      </if>
+      <if test="backup != null" >
+        #{backup,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword1 != null" >
+        #{keyword1,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword2 != null" >
+        #{keyword2,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword3 != null" >
+        #{keyword3,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword4 != null" >
+        #{keyword4,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword5 != null" >
+        #{keyword5,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword6 != null" >
+        #{keyword6,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword7 != null" >
+        #{keyword7,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword8 != null" >
+        #{keyword8,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword9 != null" >
+        #{keyword9,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword10 != null" >
+        #{keyword10,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword11 != null" >
+        #{keyword11,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword12 != null" >
+        #{keyword12,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword13 != null" >
+        #{keyword13,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword14 != null" >
+        #{keyword14,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword15 != null" >
+        #{keyword15,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.competition.domain.OrdertaskExample" resultType="java.lang.Integer" >
+    select count(*) from ordertask
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ordertask
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.customerId != null" >
+        customer_id = #{record.customerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.resourceId != null" >
+        resource_id = #{record.resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUser != null" >
+        update_user = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskAction != null" >
+        task_action = #{record.taskAction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskType != null" >
+        task_type = #{record.taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.quantity != null" >
+        quantity = #{record.quantity,jdbcType=INTEGER},
+      </if>
+      <if test="record.attachment != null" >
+        attachment = #{record.attachment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backup != null" >
+        backup = #{record.backup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword1 != null" >
+        keyword1 = #{record.keyword1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword2 != null" >
+        keyword2 = #{record.keyword2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword3 != null" >
+        keyword3 = #{record.keyword3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword4 != null" >
+        keyword4 = #{record.keyword4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword5 != null" >
+        keyword5 = #{record.keyword5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword6 != null" >
+        keyword6 = #{record.keyword6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword7 != null" >
+        keyword7 = #{record.keyword7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword8 != null" >
+        keyword8 = #{record.keyword8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword9 != null" >
+        keyword9 = #{record.keyword9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword10 != null" >
+        keyword10 = #{record.keyword10,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword11 != null" >
+        keyword11 = #{record.keyword11,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword12 != null" >
+        keyword12 = #{record.keyword12,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword13 != null" >
+        keyword13 = #{record.keyword13,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword14 != null" >
+        keyword14 = #{record.keyword14,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword15 != null" >
+        keyword15 = #{record.keyword15,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ordertask
+    set id = #{record.id,jdbcType=INTEGER},
+      customer_id = #{record.customerId,jdbcType=INTEGER},
+      order_id = #{record.orderId,jdbcType=INTEGER},
+      resource_id = #{record.resourceId,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_user = #{record.updateUser,jdbcType=VARCHAR},
+      task_action = #{record.taskAction,jdbcType=VARCHAR},
+      task_type = #{record.taskType,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      quantity = #{record.quantity,jdbcType=INTEGER},
+      attachment = #{record.attachment,jdbcType=VARCHAR},
+      backup = #{record.backup,jdbcType=VARCHAR},
+      keyword1 = #{record.keyword1,jdbcType=VARCHAR},
+      keyword2 = #{record.keyword2,jdbcType=VARCHAR},
+      keyword3 = #{record.keyword3,jdbcType=VARCHAR},
+      keyword4 = #{record.keyword4,jdbcType=VARCHAR},
+      keyword5 = #{record.keyword5,jdbcType=VARCHAR},
+      keyword6 = #{record.keyword6,jdbcType=VARCHAR},
+      keyword7 = #{record.keyword7,jdbcType=VARCHAR},
+      keyword8 = #{record.keyword8,jdbcType=VARCHAR},
+      keyword9 = #{record.keyword9,jdbcType=VARCHAR},
+      keyword10 = #{record.keyword10,jdbcType=VARCHAR},
+      keyword11 = #{record.keyword11,jdbcType=VARCHAR},
+      keyword12 = #{record.keyword12,jdbcType=VARCHAR},
+      keyword13 = #{record.keyword13,jdbcType=VARCHAR},
+      keyword14 = #{record.keyword14,jdbcType=VARCHAR},
+      keyword15 = #{record.keyword15,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.competition.domain.Ordertask" >
+    update ordertask
+    <set >
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceId != null" >
+        resource_id = #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="taskAction != null" >
+        task_action = #{taskAction,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null" >
+        task_type = #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="attachment != null" >
+        attachment = #{attachment,jdbcType=VARCHAR},
+      </if>
+      <if test="backup != null" >
+        backup = #{backup,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword1 != null" >
+        keyword1 = #{keyword1,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword2 != null" >
+        keyword2 = #{keyword2,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword3 != null" >
+        keyword3 = #{keyword3,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword4 != null" >
+        keyword4 = #{keyword4,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword5 != null" >
+        keyword5 = #{keyword5,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword6 != null" >
+        keyword6 = #{keyword6,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword7 != null" >
+        keyword7 = #{keyword7,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword8 != null" >
+        keyword8 = #{keyword8,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword9 != null" >
+        keyword9 = #{keyword9,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword10 != null" >
+        keyword10 = #{keyword10,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword11 != null" >
+        keyword11 = #{keyword11,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword12 != null" >
+        keyword12 = #{keyword12,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword13 != null" >
+        keyword13 = #{keyword13,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword14 != null" >
+        keyword14 = #{keyword14,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword15 != null" >
+        keyword15 = #{keyword15,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.competition.domain.Ordertask" >
+    update ordertask
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      order_id = #{orderId,jdbcType=INTEGER},
+      resource_id = #{resourceId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      task_action = #{taskAction,jdbcType=VARCHAR},
+      task_type = #{taskType,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      quantity = #{quantity,jdbcType=INTEGER},
+      attachment = #{attachment,jdbcType=VARCHAR},
+      backup = #{backup,jdbcType=VARCHAR},
+      keyword1 = #{keyword1,jdbcType=VARCHAR},
+      keyword2 = #{keyword2,jdbcType=VARCHAR},
+      keyword3 = #{keyword3,jdbcType=VARCHAR},
+      keyword4 = #{keyword4,jdbcType=VARCHAR},
+      keyword5 = #{keyword5,jdbcType=VARCHAR},
+      keyword6 = #{keyword6,jdbcType=VARCHAR},
+      keyword7 = #{keyword7,jdbcType=VARCHAR},
+      keyword8 = #{keyword8,jdbcType=VARCHAR},
+      keyword9 = #{keyword9,jdbcType=VARCHAR},
+      keyword10 = #{keyword10,jdbcType=VARCHAR},
+      keyword11 = #{keyword11,jdbcType=VARCHAR},
+      keyword12 = #{keyword12,jdbcType=VARCHAR},
+      keyword13 = #{keyword13,jdbcType=VARCHAR},
+      keyword14 = #{keyword14,jdbcType=VARCHAR},
+      keyword15 = #{keyword15,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

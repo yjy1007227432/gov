@@ -117,10 +117,7 @@ import java.util.ArrayList;
         /*     */
     }
 
-    /*     */
-    /*     */
-    /*     */
-    /*     */
+
     /*     */   protected static abstract class GeneratedCriteria
             /*     */ {
         /*  72 */     protected List<OrderExample.Criterion> criteria = new ArrayList<>();

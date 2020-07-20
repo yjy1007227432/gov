@@ -77,6 +77,7 @@
     id, name, order_id, create_time, update_time, create_user, update_user, size, quantity, 
     backup, backup1, backup2
   </sql>
+
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.competition.domain.ResourceossExample" >
     select
     <if test="distinct" >
@@ -91,12 +92,26 @@
       order by ${orderByClause}
     </if>
   </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from resourceoss
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByResourceoss" resultMap="BaseResultMap" parameterType="org.competition.domain.Resourceoss" >
+    select <include refid="Base_Column_List"/> from resourceoss
+    <where>
+      <if test="orderId != null">
+        order_id = #{orderId}
+      </if>
+    </where>
+  </select>
+
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from resourceoss
     where id = #{id,jdbcType=INTEGER}
@@ -198,12 +213,17 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.competition.domain.ResourceossExample" resultType="java.lang.Integer" >
+
+  <select id="countByExample" parameterType="org.competition.domain.Resourceoss" resultType="java.lang.Integer" >
     select count(*) from resourceoss
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
+    <where>
+      <if test="orderId != null">
+        order_id = #{orderId}
+      </if>
+    </where>
   </select>
+
+
   <update id="updateByExampleSelective" parameterType="map" >
     update resourceoss
     <set >

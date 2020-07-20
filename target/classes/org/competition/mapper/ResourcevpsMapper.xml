@@ -256,11 +256,13 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.competition.domain.ResourcevpsExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="org.competition.domain.Resourcevps" resultType="java.lang.Integer" >
     select count(*) from resourcevps
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
+    <where>
+      <if test="orderId != null">
+        order_id = #{orderId}
+      </if>
+    </where>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
     update resourcevps

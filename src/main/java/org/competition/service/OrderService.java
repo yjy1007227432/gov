@@ -14,7 +14,8 @@ import java.time.Instant;
 /*     */ import org.competition.dao.OrderPojo;
 /*     */ import org.competition.domain.Customer;
 /*     */ import org.competition.domain.Order;
-/*     */ import org.competition.mapper.OrderMapper;
+/*     */ import org.competition.domain.OrderExample;
+import org.competition.mapper.OrderMapper;
 /*     */ import org.springframework.beans.BeanUtils;
 /*     */ import org.springframework.beans.BeansException;
 /*     */ import org.springframework.beans.factory.annotation.Autowired;
@@ -34,14 +35,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RequestMapping({"/gov/order"})
 /*     */
 @CrossOrigin(allowCredentials = "true", allowedHeaders = {"*"})
-/*     */ public class OrderService
-        /*     */ {
-    /*     */
+public class OrderService {
     @Autowired
-    /*     */ private OrderMapper orderMapper;
-    /*     */
+    private OrderMapper orderMapper;
     @Autowired
-    /*     */ private CustomerService customerService;
+    private CustomerService customerService;
     @Autowired
     private ResourcevpsService resourcevpsService;
     @Autowired
@@ -52,7 +50,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
     private ResourceslbService resourceslbService;
 
 
-    /*  34 */   public static final Logger LOGGER = LogManager.getLogger(OrderService.class);
+    public static final Logger LOGGER = LogManager.getLogger(OrderService.class);
 
     /*     */
     /*     */
@@ -98,9 +96,35 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
     /*     */
     @RequestMapping({"/add"})
-    /*     */ public int addOrder(@RequestParam(required = false) Integer customerId, @RequestParam(required = false) String contact, @RequestParam(required = false) String contactPhone, @RequestParam(required = false) String contactMail, @RequestParam(required = false) String feedback, @RequestParam(required = false) String content, @RequestParam(required = false) Integer queueId, @RequestParam(required = false) String backup1) {
+    /*     */ public int addOrder(@RequestParam(required = false) Integer customerId,
+                                  @RequestParam(required = false) String contact,
+                                  @RequestParam(required = false) String contactPhone,
+                                  @RequestParam(required = false) String contactMail,
+                                  @RequestParam(required = false) String feedback,
+                                  @RequestParam(required = false) String content,
+                                  @RequestParam(required = false) Integer queueId,
+                                  @RequestParam(required = false) String backup1,
+
+                                  @RequestParam(required = false) String kcontact,
+                                  @RequestParam(required = false) String kcontactPhone,
+                                  @RequestParam(required = false) String kcontactEmail,
+                                  @RequestParam(required = false) String orderNumber,
+                                  @RequestParam(required = false) String name,
+                                  @RequestParam(required = false) Date startDate,
+                                  @RequestParam(required = false) Date finishDate
+
+
+
+    ) {
         /*  77 */
-        Order order = (new Order()).setCustomerId(customerId).setContact(contact).setContactPhone(contactPhone).setContactEmail(contactMail).setFeedback(feedback).setContent(content).setCreateTime(Date.from(Instant.now())).setQueueId(queueId).setBackup1(backup1);
+        Order order = (new Order()).setCustomerId(customerId).
+                setContact(contact).setContactPhone(contactPhone).
+                setContactEmail(contactMail).setFeedback(feedback).
+                setContent(content).setCreateTime(Date.from(Instant.now())).
+                setQueueId(queueId).setBackup1(backup1).setKcontact(kcontact).
+                setKcontactPhone(kcontactPhone).setKcontactEmail(kcontactEmail)
+                .setOrderNumber(orderNumber).setName(name).setStartDate(startDate)
+                .setFinishDate(finishDate);
         /*  78 */
         int result = 0;
         /*     */
@@ -122,9 +146,35 @@ import org.springframework.web.bind.annotation.CrossOrigin;
     /*     */
     /*     */
     @RequestMapping({"/update"})
-    /*     */ public int updateOrder(@RequestParam(required = false) Integer customerId, @RequestParam(required = false) String contact, @RequestParam(required = false) String contactPhone, @RequestParam(required = false) String contactMail, @RequestParam(required = false) String feedback, @RequestParam(required = false) String content, @RequestParam(required = false) String updateUser, Integer id, @RequestParam(required = false) Integer queueId) {
+    /*     */ public int updateOrder(@RequestParam(required = false) Integer customerId,
+                                     @RequestParam(required = false) String contact,
+                                     @RequestParam(required = false) String contactPhone,
+                                     @RequestParam(required = false) String contactMail,
+                                     @RequestParam(required = false) String feedback,
+                                     @RequestParam(required = false) String content,
+                                     @RequestParam(required = false) String updateUser,
+                                     Integer id,
+                                     @RequestParam(required = false) Integer queueId,
+
+                                     @RequestParam(required = false) String kcontact,
+                                     @RequestParam(required = false) String kcontactPhone,
+                                     @RequestParam(required = false) String kcontactEmail,
+                                     @RequestParam(required = false) String orderNumber,
+                                     @RequestParam(required = false) String name,
+                                     @RequestParam(required = false) Date startDate,
+                                     @RequestParam(required = false) Date finishDate
+
+
+    ) {
         /* 113 */
-        Order order = (new Order()).setCustomerId(customerId).setContact(contact).setContactPhone(contactPhone).setContactEmail(contactMail).setFeedback(feedback).setContent(content).setId(id).setUpdateUser(updateUser).setUpdateTime(Date.from(Instant.now())).setQueueId(queueId);
+        Order order = (new Order()).setCustomerId(customerId).
+                setContact(contact).setContactPhone(contactPhone).
+                setContactEmail(contactMail).setFeedback(feedback).
+                setContent(content).setId(id).setUpdateUser(updateUser).
+                setUpdateTime(Date.from(Instant.now())).setQueueId(queueId)
+                .setKcontact(kcontact).setKcontactPhone(kcontactPhone)
+                .setKcontactEmail(kcontactEmail).setOrderNumber(orderNumber).setName(name)
+                .setStartDate(startDate).setFinishDate(finishDate);
         /* 114 */
         int result = 0;
         /*     */
@@ -176,47 +226,28 @@ import org.springframework.web.bind.annotation.CrossOrigin;
     }
 
     @RequestMapping({"/list"})
-    /*     */ public List<OrderCustomer> ListOrder() {
-        /* 144 */
-        List<Order> orderList = null;
-        /*     */
-        try {
-            /* 146 */
-            orderList = this.orderMapper.selectByExample(null);
-            /* 147 */
-        } catch (Exception e) {
-            /* 148 */
-            LOGGER.error("orderMapper.selectByExample查询数据失败", e);
-            /*     */
-        }
-        /* 150 */
-        List<OrderCustomer> orderCustomers = new ArrayList<>();
-        /* 151 */
-        if (orderList != null) {
-            /* 152 */
-            for (Order order : orderList) {
-                /* 153 */
-                Customer customer = this.customerService.findCustomerById(order.getCustomerId().intValue());
-                /* 154 */
-                if (customer != null) {
-                    /* 155 */
-                    OrderCustomer orderCustomer = new OrderCustomer();
-                    /* 156 */
-                    BeanUtils.copyProperties(order, orderCustomer);
-                    /* 157 */
-                    orderCustomer.setName(customer.getName());
-                    /* 158 */
-                    orderCustomers.add(orderCustomer);
-                    /*     */
-                }
-                /*     */
-            }
-            /*     */
-        }
-        /* 162 */
-        return orderCustomers;
+    /*     */ public List<Order> ListOrder() {
+        OrderExample example = new OrderExample();
+        OrderExample.Criteria criteria = example.createCriteria();
+        List<Order> orders = orderMapper.selectByExample2(example);
+        return orders;
         /*     */
     }
+
+
+    @RequestMapping({"/listcustomer"})
+    public List<Order> ListCustomer(Integer customerId) {
+        OrderExample example = new OrderExample();
+        OrderExample.Criteria criteria = example.createCriteria();
+        criteria.andCustomerIdEqualTo(customerId);
+        List<Order> orders = orderMapper.selectByExample2(example);
+        return orders;
+    }
+
+
+
+
+
 
     /*     */
     /*     */

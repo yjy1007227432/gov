@@ -1,4 +1,5 @@
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\control\IndexController.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\OrdertaskExample.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\LoginResult.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\control\TestController.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\utils\Decode.java
@@ -10,7 +11,9 @@ C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Customer
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Result.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Dictvalue.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\ProductExample.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\dao\OrderTaskResult.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\ResourcerdsMapper.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Ordertask.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\DictvalueExample.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\OrderExample.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\NewsService.java
@@ -44,6 +47,7 @@ C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Resource
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\ResultCode.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\SolutionExample.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Resourcerds.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\OrdertaskMapper.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Resourcevps.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\ProductMapper.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\OrderService.java
@@ -54,6 +58,7 @@ C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\RespBean
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\DictvalueKV.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\control\LoginController.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\ServletInitializer.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\OrderTaskService.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\ResourcerdsService.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\ResourcevpsMapper.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\UserExample.java

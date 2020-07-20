@@ -1,9 +1,12 @@
 package org.competition.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.experimental.Accessors;
 
 import java.util.Date;
 
+@Accessors(chain = true)
+@lombok.Data
 public class Order {
     private Integer id;
 
@@ -18,6 +21,22 @@ public class Order {
     private String updateUser;
 
     private String contact;
+
+    private String kcontact;
+
+    private String kcontactPhone;
+
+    private String kcontactEmail;
+
+    private String orderNumber;
+
+    private String name;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date startDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date finishDate;
 
     private String contactPhone;
 
