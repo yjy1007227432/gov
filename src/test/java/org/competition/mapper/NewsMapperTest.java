@@ -2,6 +2,7 @@ package org.competition.mapper;
 
 import org.competition.CompetitionServerApplication;
 import org.competition.dao.IdAndName;
+import org.competition.dao.OrderCustomer;
 import org.competition.dao.OrderPojo;
 import org.competition.dao.OrderTaskResult;
 import org.competition.domain.News;
@@ -65,7 +66,9 @@ public class NewsMapperTest {
 //        orderTaskService.updateOrderTask(88,90,null,null,
 //                null,null,null,null,null,null,null,null,null);
 
-        orderTaskService.deleteById(88);
+//        orderTaskService.deleteById(88);
+
+        List<OrderCustomer> orderCustomers = orderService.ListCustomer(81);
         System.out.println();
     }
 

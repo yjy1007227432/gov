@@ -114,7 +114,6 @@ public class OrderService {
                                   @RequestParam(required = false) Date finishDate
 
 
-
     ) {
         /*  77 */
         Order order = (new Order()).setCustomerId(customerId).
@@ -225,35 +224,74 @@ public class OrderService {
         /*     */
     }
 
+    /*     */
     @RequestMapping({"/list"})
-    /*     */ public List<Order> ListOrder() {
-        OrderExample example = new OrderExample();
-        OrderExample.Criteria criteria = example.createCriteria();
-        List<Order> orders = orderMapper.selectByExample2(example);
-        return orders;
+    /*     */ public List<OrderCustomer> ListOrder() {
+        /* 144 */
+        List<Order> orderList = null;
         /*     */
+        try {
+            /* 146 */
+            orderList = this.orderMapper.selectByExample(null);
+            /* 147 */
+        } catch (Exception e) {
+            /* 148 */
+            LOGGER.error("orderMapper.selectByExample查询数据失败", e);
+            /*     */
+        }
+        List<OrderCustomer> orderCustomers = new ArrayList<>();
+        if (orderList != null) {
+            for (Order order : orderList) {
+                Customer customer = this.customerService.findCustomerById(order.getCustomerId().intValue());
+                /* 154 */
+                if (customer != null) {
+                    OrderCustomer orderCustomer = new OrderCustomer();
+                    BeanUtils.copyProperties(order, orderCustomer);
+                    orderCustomer.setCustomerName(customer.getName());
+                    orderCustomers.add(orderCustomer);
+                }
+                /*     */
+            }
+            /*     */
+        }
+        /* 162 */
+        return orderCustomers;
     }
 
 
     @RequestMapping({"/listcustomer"})
-    public List<Order> ListCustomer(Integer customerId) {
+    public List<OrderCustomer> ListCustomer(Integer customerId) {
         OrderExample example = new OrderExample();
         OrderExample.Criteria criteria = example.createCriteria();
         criteria.andCustomerIdEqualTo(customerId);
-        List<Order> orders = orderMapper.selectByExample2(example);
-        return orders;
+
+        List<Order> orderList = orderMapper.selectByExample2(example);
+
+        List<OrderCustomer> orderCustomers = new ArrayList<>();
+
+        if (orderList != null) {
+            for (Order order : orderList) {
+                Customer customer = this.customerService.findCustomerById(order.getCustomerId().intValue());
+                /* 154 */
+                if (customer != null) {
+                    OrderCustomer orderCustomer = new OrderCustomer();
+                    BeanUtils.copyProperties(order, orderCustomer);
+                    orderCustomer.setCustomerName(customer.getName());
+                    orderCustomers.add(orderCustomer);
+                }
+                /*     */
+            }
+            /*     */
+        }
+        /* 162 */
+        return orderCustomers;
     }
-
-
-
-
 
 
     /*     */
     /*     */
     @RequestMapping({"/find"})
     /*     */ public OrderCustomer findOrderById(int id) {
-        /* 167 */
         Order order = null;
         /*     */
         try {
@@ -280,7 +318,7 @@ public class OrderService {
             /* 179 */
             BeanUtils.copyProperties(order, orderCustomer);
             /* 180 */
-            orderCustomer.setName(customer.getName());
+            orderCustomer.setCustomerName(customer.getName());
             /*     */
         }
         /* 182 */

@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 @Component
 @RestController
@@ -65,15 +63,28 @@ public class OrderTaskService {
         for (Ordertask ordertask:ordertasks) {
             OrderTaskResult orderTaskResult = new OrderTaskResult();
             BeanUtils.copyProperties(ordertask, orderTaskResult);
-            orderTaskResult.setCustomer_name(customerService.findCustomerById(ordertask.getCustomerId()).getName());
+            try {
+                orderTaskResult.setCustomer_name(customerService.findCustomerById(ordertask.getCustomerId()).getName());
+            }catch(Exception e){
+                    LOGGER.error("根据customerId找不到customername"); }
+            try {
             if (ordertask.getOrderId()!=null){
                 orderTaskResult.setOrder_name(orderService.findOrderById(ordertask.getOrderId()).getName());
-            }
+            }}catch(Exception e){
+                    LOGGER.error("根据orderId找不到customername"); }
             switch (ordertask.getTaskType()){
-                case "VPS": orderTaskResult.setResource_name(resourcevpsService.findById(ordertask.getResourceId()).getName()); break;
-                case "OSS": orderTaskResult.setResource_name(resourceossService.findById(ordertask.getResourceId()).getName()); break;
-                case "SLB": orderTaskResult.setResource_name(resourceslbService.findById(ordertask.getResourceId()).getName()); break;
-                case "RDS": orderTaskResult.setResource_name(resourcerdsService.findById(ordertask.getResourceId()).getName()); break;
+                case "VPS": try {orderTaskResult.setResource_name(resourcevpsService.findById(ordertask.getResourceId()).getName()); }catch(Exception e){
+                    LOGGER.error("根据ResourceId找不到VPSname");
+                } break;
+                case "OSS": try {orderTaskResult.setResource_name(resourceossService.findById(ordertask.getResourceId()).getName());  }catch(Exception e){
+                    LOGGER.error("根据ResourceId找不到OSSname");
+                }break;
+                case "SLB": try {orderTaskResult.setResource_name(resourceslbService.findById(ordertask.getResourceId()).getName());  }catch(Exception e){
+                    LOGGER.error("根据ResourceId找不到SLBname");
+                }break;
+                case "RDS": try {orderTaskResult.setResource_name(resourcerdsService.findById(ordertask.getResourceId()).getName());  }catch(Exception e){
+                    LOGGER.error("根据ResourceId找不到RDSname");
+                }break;
             }
             orderTaskResults.add(orderTaskResult);
 
@@ -82,10 +93,10 @@ public class OrderTaskService {
     }
 
     @RequestMapping({"/listcustomer"})
-    public List<OrderTaskResult> findListCoumster(Integer customerId){
+    public List<OrderTaskResult> findListCoumster(Integer customer_id){
         OrdertaskExample ordertaskExample = new OrdertaskExample();
         OrdertaskExample.Criteria criteria= ordertaskExample.createCriteria();
-        criteria.andCustomerIdEqualTo(customerId);
+        criteria.andCustomerIdEqualTo(customer_id);
 
             List<Ordertask> ordertasks = ordertaskMapper.selectByExample(ordertaskExample);
 
@@ -139,26 +150,44 @@ public class OrderTaskService {
 
     @RequestMapping({"/add"})
     public int addOrderTask(
-            Integer customerId,
-            @RequestParam(required = false) Integer orderId,
-            @RequestParam(required = false) Integer resourceId,
-            @RequestParam(required = false) Date createTime,
-            @RequestParam(required = false) Date updateTime,
-            @RequestParam(required = false) String updateUser,
-            @RequestParam(required = false) String taskAction,
-            @RequestParam(required = false) String taskType,
+            Integer customer_id,
+            @RequestParam(required = false) Integer order_id,
+            @RequestParam(required = false) Integer resource_id,
+            @RequestParam(required = false) Date create_time,
+            @RequestParam(required = false) Date update_time,
+            @RequestParam(required = false) String update_user,
+            @RequestParam(required = false) String task_action,
+            @RequestParam(required = false) String task_type,
             @RequestParam(required = false) String status,
             @RequestParam(required = false) String name,
             @RequestParam(required = false) Integer quantity,
             @RequestParam(required = false) String attachment,
-            @RequestParam(required = false) String backup
+            @RequestParam(required = false) String backup,
+            @RequestParam(required = false) String keyword1,
+            @RequestParam(required = false) String keyword2,
+            @RequestParam(required = false) String keyword3,
+            @RequestParam(required = false) String keyword4,
+            @RequestParam(required = false) String keyword5,
+            @RequestParam(required = false) String keyword6,
+            @RequestParam(required = false) String keyword7,
+            @RequestParam(required = false) String keyword8,
+            @RequestParam(required = false) String keyword9,
+            @RequestParam(required = false) String keyword10,
+            @RequestParam(required = false) String keyword11,
+            @RequestParam(required = false) String keyword12,
+            @RequestParam(required = false) String keyword13,
+            @RequestParam(required = false) String keyword14,
+            @RequestParam(required = false) String keyword15
 
     ) {
-        Ordertask ordertask = new Ordertask().setCustomerId(customerId).setOrderId(orderId)
-                .setResourceId(resourceId).setCreateTime(createTime).setUpdateTime(updateTime)
-                .setUpdateUser(updateUser).setTaskAction(taskAction).setTaskType(taskType)
+        Ordertask ordertask = new Ordertask().setCustomerId(customer_id).setOrderId(order_id)
+                .setResourceId(resource_id).setCreateTime(create_time).setUpdateTime(update_time)
+                .setUpdateUser(update_user).setTaskAction(task_action).setTaskType(task_type)
                 .setStatus(status).setName(name).setQuantity(quantity).setAttachment(attachment)
-                .setBackup(backup);
+                .setBackup(backup).setKeyword1(keyword1).setKeyword2(keyword2).setKeyword3(keyword3)
+                .setKeyword4(keyword4).setKeyword5(keyword5).setKeyword6(keyword6).setKeyword7(keyword7)
+                .setKeyword8(keyword8).setKeyword9(keyword9).setKeyword10(keyword10).setKeyword11(keyword11)
+                .setKeyword12(keyword12).setKeyword13(keyword13).setKeyword13(keyword14).setKeyword13(keyword15);
 
          int result = ordertaskMapper.insert(ordertask);
          return result;
@@ -168,31 +197,49 @@ public class OrderTaskService {
 
     @RequestMapping({"/update"})
     public int updateOrderTask(
-            Integer customerId,
-            @RequestParam(required = false) Integer orderId,
-            @RequestParam(required = false) Integer resourceId,
-            @RequestParam(required = false) Date createTime,
-            @RequestParam(required = false) Date updateTime,
-            @RequestParam(required = false) String updateUser,
-            @RequestParam(required = false) String taskAction,
-            @RequestParam(required = false) String taskType,
+            Integer customer_id,
+            @RequestParam(required = false) Integer order_id,
+            @RequestParam(required = false) Integer resource_id,
+            @RequestParam(required = false) Date create_time,
+            @RequestParam(required = false) Date update_time,
+            @RequestParam(required = false) String update_user,
+            @RequestParam(required = false) String task_action,
+            @RequestParam(required = false) String task_type,
             @RequestParam(required = false) String status,
             @RequestParam(required = false) String name,
             @RequestParam(required = false) Integer quantity,
             @RequestParam(required = false) String attachment,
-            @RequestParam(required = false) String backup
+            @RequestParam(required = false) String backup,
+            @RequestParam(required = false) String keyword1,
+            @RequestParam(required = false) String keyword2,
+            @RequestParam(required = false) String keyword3,
+            @RequestParam(required = false) String keyword4,
+            @RequestParam(required = false) String keyword5,
+            @RequestParam(required = false) String keyword6,
+            @RequestParam(required = false) String keyword7,
+            @RequestParam(required = false) String keyword8,
+            @RequestParam(required = false) String keyword9,
+            @RequestParam(required = false) String keyword10,
+            @RequestParam(required = false) String keyword11,
+            @RequestParam(required = false) String keyword12,
+            @RequestParam(required = false) String keyword13,
+            @RequestParam(required = false) String keyword14,
+            @RequestParam(required = false) String keyword15
 
     ) {
 
         OrdertaskExample ordertaskExample = new OrdertaskExample();
         OrdertaskExample.Criteria criteria= ordertaskExample.createCriteria();
-        criteria.andCustomerIdEqualTo(customerId);
+        criteria.andCustomerIdEqualTo(customer_id);
 
-        Ordertask ordertask = new Ordertask().setCustomerId(customerId).setOrderId(orderId)
-                .setResourceId(resourceId).setCreateTime(createTime).setUpdateTime(updateTime)
-                .setUpdateUser(updateUser).setTaskAction(taskAction).setTaskType(taskType)
+        Ordertask ordertask = new Ordertask().setCustomerId(customer_id).setOrderId(order_id)
+                .setResourceId(resource_id).setCreateTime(create_time).setUpdateTime(update_time)
+                .setUpdateUser(update_user).setTaskAction(task_action).setTaskType(task_type)
                 .setStatus(status).setName(name).setQuantity(quantity).setAttachment(attachment)
-                .setBackup(backup);
+                .setBackup(backup).setKeyword1(keyword1).setKeyword2(keyword2).setKeyword3(keyword3)
+                .setKeyword4(keyword4).setKeyword5(keyword5).setKeyword6(keyword6).setKeyword7(keyword7)
+                .setKeyword8(keyword8).setKeyword9(keyword9).setKeyword10(keyword10).setKeyword11(keyword11)
+                .setKeyword12(keyword12).setKeyword13(keyword13).setKeyword13(keyword14).setKeyword13(keyword15);
 
         int result = ordertaskMapper.updateByExampleSelective(ordertask,ordertaskExample);
         return result;
@@ -200,10 +247,10 @@ public class OrderTaskService {
     }
 
     @RequestMapping({"/deletebyid"})
-    public int deleteById(Integer customerId){
+    public int deleteById(Integer customer_id){
         OrdertaskExample ordertaskExample = new OrdertaskExample();
         OrdertaskExample.Criteria criteria= ordertaskExample.createCriteria();
-        criteria.andCustomerIdEqualTo(customerId);
+        criteria.andCustomerIdEqualTo(customer_id);
         int result = ordertaskMapper.deleteByExample(ordertaskExample);
         return result;
     }
