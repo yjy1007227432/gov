@@ -720,6 +720,11 @@ public class ResourceslbExample {
             return (Criteria) this;
         }
 
+        public Criteria andPortLike(String value) {
+            addCriterion("port like", value, "port");
+            return (Criteria) this;
+        }
+
         public Criteria andIpaddressNotLike(String value) {
             addCriterion("ipaddress not like", value, "ipaddress");
             return (Criteria) this;

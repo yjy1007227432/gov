@@ -23,13 +23,16 @@ org\competition\service\ProductService.class
 org\competition\domain\ResourceslbExample$Criterion.class
 org\competition\domain\Solution.class
 org\competition\domain\Resourcerds.class
+org\competition\dao\QuantityWeek.class
 org\competition\domain\DictvalueExample.class
 org\competition\domain\ResourcerdsExample$Criterion.class
 org\competition\domain\ResourcerdsExample$GeneratedCriteria.class
 org\competition\dao\IdAndName.class
 org\competition\dao\OrderCustomer.class
 org\competition\domain\Resourceoss.class
+org\competition\utils\Stringstr.class
 org\competition\domain\OrderExample.class
+org\competition\dao\OrderReport.class
 org\competition\domain\CustomerExample$GeneratedCriteria.class
 org\competition\domain\LoginResult.class
 org\competition\domain\OrdertaskExample.class
@@ -38,6 +41,7 @@ org\competition\control\FileController.class
 org\competition\domain\DictvalueExample$GeneratedCriteria.class
 org\competition\service\ResourceossService.class
 org\competition\domain\Product.class
+org\competition\utils\TimeParse.class
 org\competition\mapper\ResourcerdsMapper.class
 org\competition\domain\NewsExample$Criteria.class
 org\competition\domain\OrderExample$GeneratedCriteria.class
@@ -49,7 +53,6 @@ org\competition\domain\Customer.class
 org\competition\service\OrderTaskService.class
 org\competition\mapper\SolutionMapper.class
 org\competition\mapper\OrderMapper.class
-org\competition\service\dictvalueService.class
 org\competition\control\UploadDownloadController.class
 org\competition\CompetitionServerApplication.class
 org\competition\domain\ResourcerdsExample$Criteria.class
@@ -60,6 +63,7 @@ org\competition\dao\OrderTaskResult.class
 org\competition\domain\SolutionExample$Criterion.class
 org\competition\domain\CustomerExample.class
 org\competition\service\UserService.class
+org\competition\service\DictvalueService.class
 org\competition\domain\OrdertaskExample$Criteria.class
 org\competition\domain\OrdertaskExample$Criterion.class
 org\competition\service\OrderService.class
@@ -92,6 +96,7 @@ org\competition\domain\ResourceslbExample$Criteria.class
 org\competition\domain\Dictvalue.class
 org\competition\domain\ResourcerdsExample.class
 org\competition\domain\User.class
+org\competition\utils\BeforeWeek.class
 org\competition\domain\CustomerExample$Criteria.class
 org\competition\domain\ResourcevpsExample.class
 org\competition\service\CustomerService.class

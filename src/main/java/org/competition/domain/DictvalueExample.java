@@ -406,7 +406,7 @@ public class DictvalueExample {
         }
 
         public Criteria andKeyIn(List<Integer> values) {
-            addCriterion("key in", values, "key");
+            addCriterion("`key` in", values, "key");
             return (Criteria) this;
         }
 

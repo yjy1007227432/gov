@@ -7,6 +7,7 @@ import org.competition.domain.*;
 import org.competition.mapper.OrderMapper;
 import org.competition.mapper.ResourcerdsMapper;
 import org.competition.mapper.ResourcevpsMapper;
+import org.competition.utils.Stringstr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 @RestController
@@ -33,7 +34,7 @@ public class ResourcerdsService {
 
     @RequestMapping({"/add"})
     public int addResourcerds(String name,
-                              @RequestParam(value = "order_id",required = false) Integer orderId,
+                              @RequestParam(value = "order_id", required = false) Integer orderId,
                               @RequestParam(required = false) Integer type,
                               @RequestParam(required = false) Integer memory,
                               @RequestParam(required = false) Integer storage,
@@ -104,8 +105,8 @@ public class ResourcerdsService {
     @RequestMapping({"/update"})
     public int update(Integer id,
                       @RequestParam(required = false) String name,
-                      @RequestParam(value = "order_id",required = false) Integer orderId,
-                      @RequestParam(value = "update_user",required = false) String updateUser,
+                      @RequestParam(value = "order_id", required = false) Integer orderId,
+                      @RequestParam(value = "update_user", required = false) String updateUser,
                       @RequestParam(required = false) Integer type,
                       @RequestParam(required = false) Integer memory,
                       @RequestParam(required = false) Integer storage,
@@ -159,5 +160,87 @@ public class ResourcerdsService {
         }
         return result;
     }
+
+    public List<Resourcerds> findAll() {
+        return resourcerdsMapper.selectByExample(null);
+    }
+
+
+    public List<Integer> findRdsIdByName(String name) {
+        List<Resourcerds> resourcerdses = null;
+        try {
+            ResourcerdsExample example = new ResourcerdsExample();
+            ResourcerdsExample.Criteria criteria = example.createCriteria();
+            criteria.andNameLike(Stringstr.parse(name));
+            resourcerdses = this.resourcerdsMapper.selectByExample(example);
+        } catch (Exception e) {
+            LOGGER.error("resourcerdsMapper.selectByExample查询数据失败", e);
+        }
+        if (Objects.equals(resourcerdses, null)) {
+            LOGGER.error("查询结果为空");
+        }
+        return resourcerdses.stream().map(Resourcerds::getId).collect(Collectors.toList());
+    }
+
+
+    @RequestMapping({"/select"})
+    public List<Resourcerds> select(@RequestParam(required = false) String name,
+                                    @RequestParam(required = false) String startTime,
+                                    @RequestParam(required = false) Integer type,
+                                    @RequestParam(required = false) Integer memory,
+                                    @RequestParam(required = false) Integer storage,
+                                    @RequestParam(required = false) Integer instance,
+                                    @RequestParam(required = false) Integer network,
+                                    @RequestParam(required = false) String endTime) {
+
+        Date beforedate = null;
+        Date afterDate = null;
+
+        if (startTime != null && endTime != null) {
+            startTime += " 00:00:00";
+            endTime += " 23:59:59";
+
+
+            try {
+                beforedate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startTime);
+                afterDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(endTime);
+            } catch (ParseException e) {
+                LOGGER.error("日期转化错误");
+            }
+
+        }
+
+
+        ResourcerdsExample example = new ResourcerdsExample();
+        ResourcerdsExample.Criteria criteria = example.createCriteria();
+
+
+        if (name != null) {
+            criteria.andNameLike(Stringstr.parse(name));
+        }
+        if (type != null) {
+            criteria.andTypeEqualTo(type);
+        }
+        if(memory!=null) {
+            criteria.andMemoryEqualTo(memory);
+        }
+        if(startTime != null && endTime != null) {
+            criteria.andUpdateTimeBetween(beforedate, afterDate);
+        }
+        if (instance!=null) {
+            criteria.andInstanceEqualTo(instance);
+        }
+        if(storage!=null) {
+            criteria.andStorageEqualTo(storage);
+        }
+        if (network!=null) {
+            criteria.andNetworkEqualTo(network);
+        };
+
+
+        List<Resourcerds> resourcerdses = resourcerdsMapper.selectByExample(example);
+        return resourcerdses;
+    }
+
 
 }

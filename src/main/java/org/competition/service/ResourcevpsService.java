@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.competition.domain.*;
 import org.competition.mapper.ResourcevpsMapper;
+import org.competition.utils.Stringstr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Component
@@ -165,6 +166,84 @@ public class ResourcevpsService {
         return result;
     }
 
+    public List<Integer> findvpsIdByName(String name) {
+        List<Resourcevps> resourcevpses = null;
+        try {
+            ResourcevpsExample example = new ResourcevpsExample();
+            ResourcevpsExample.Criteria criteria = example.createCriteria();
+            criteria.andNameLike(Stringstr.parse(name));
+            resourcevpses = this.resourcevpsMapper.selectByExample(example);
+        } catch (Exception e) {
+            LOGGER.error("resourcevpsMapper.selectByExample查询数据失败", e);
+        }
+        if (Objects.equals(resourcevpses, null)) {
+            LOGGER.error("查询结果为空");
+        }
+        return resourcevpses.stream().map(Resourcevps::getId).collect(Collectors.toList());
+    }
 
+    public List<Resourcevps> findAll() {
+        return resourcevpsMapper.selectByExample(null);
+    }
+
+    @RequestMapping({"/select"})
+    public List<Resourcevps> select(
+            @RequestParam(required = false) String startTime,
+            @RequestParam(required = false) String endTime,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Integer specification,
+            @RequestParam(required = false) Integer harddiskType,
+            @RequestParam(required = false) Integer networkType,
+            @RequestParam(required = false) Integer networkIspublic,
+            @RequestParam(required = false) String networkSize,
+            @RequestParam(required = false) Integer operating) {
+
+        Date beforedate = null;
+        Date afterDate = null;
+
+        if (startTime != null && endTime != null) {
+            startTime += " 00:00:00";
+            endTime += " 23:59:59";
+
+
+            try {
+                beforedate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startTime);
+                afterDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(endTime);
+            } catch (ParseException e) {
+                LOGGER.error("日期转化错误");
+            }
+
+        }
+
+        ResourcevpsExample example = new ResourcevpsExample();
+        ResourcevpsExample.Criteria criteria = example.createCriteria();
+
+        if(name!=null) {
+            criteria.andNameLike(Stringstr.parse(name));
+        }
+        if(startTime != null && endTime != null) {
+            criteria.andUpdateTimeBetween(beforedate, afterDate);
+        }
+        if(operating!=null) {
+            criteria.andOperatingEqualTo(operating);
+        }
+        if(networkSize!=null) {
+            criteria.andNetworkSizeLike(Stringstr.parse(networkSize));
+        }
+        if(networkIspublic!=null) {
+            criteria.andNetworkIspublicEqualTo(networkIspublic);
+        }
+        if(networkType!=null) {
+            criteria.andNetworkTypeEqualTo(networkType);
+        }
+        if(harddiskType!=null) {
+            criteria.andHarddiskTypeEqualTo(harddiskType);
+        }
+        if(specification!=null){
+            criteria.andSpecificationEqualTo(specification);
+        }
+        List<Resourcevps> resourcevpses = resourcevpsMapper.selectByExample(example);
+        return resourcevpses;
+    }
 
 }

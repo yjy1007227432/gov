@@ -1,5 +1,6 @@
 package org.competition.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.experimental.Accessors;
 
@@ -19,9 +20,11 @@ public class Ordertask {
     @JsonProperty("resource_id")
     private Integer resourceId;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @JsonProperty("create_time")
     private Date createTime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @JsonProperty("update_time")
     private Date updateTime;
 

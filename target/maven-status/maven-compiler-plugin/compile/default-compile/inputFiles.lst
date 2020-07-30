@@ -7,9 +7,11 @@ C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\Resourc
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\SolutionService.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\dao\OrderCustomer.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\control\FileController.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\dao\QuantityWeek.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Customer.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Result.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Dictvalue.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\utils\TimeParse.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\ProductExample.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\dao\OrderTaskResult.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\ResourcerdsMapper.java
@@ -19,7 +21,7 @@ C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\OrderExa
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\NewsService.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\CustomerExample.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\control\UploadDownloadController.java
-C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\dictvalueService.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\DictvalueService.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\dao\OrderPojo.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Product.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\User.java
@@ -37,6 +39,7 @@ C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Solution
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\News.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\ResourceslbExample.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\ResourceossExample.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\utils\BeforeWeek.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\dao\IdAndName.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\ResourcevpsExample.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\ResourceossMapper.java
@@ -64,3 +67,5 @@ C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\mapper\Resource
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\UserExample.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\domain\Resourceslb.java
 C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\service\ResourceossService.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\utils\Stringstr.java
+C:\Users\Administrator\Desktop\gov\src\main\java\org\competition\dao\OrderReport.java

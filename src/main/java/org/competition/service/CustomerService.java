@@ -4,12 +4,15 @@
 /*     */ import java.util.Date;
 /*     */ import java.util.List;
 /*     */ import java.util.Objects;
+import java.util.stream.Collectors;
 /*     */ import org.apache.logging.log4j.LogManager;
 /*     */ import org.apache.logging.log4j.Logger;
 /*     */ import org.competition.dao.IdAndName;
 /*     */ import org.competition.domain.Customer;
-/*     */ import org.competition.mapper.CustomerMapper;
-/*     */ import org.springframework.beans.factory.annotation.Autowired;
+/*     */ import org.competition.domain.CustomerExample;
+import org.competition.mapper.CustomerMapper;
+/*     */ import org.competition.utils.Stringstr;
+import org.springframework.beans.factory.annotation.Autowired;
 /*     */ import org.springframework.stereotype.Component;
 /*     */ import org.springframework.web.bind.annotation.CrossOrigin;
 /*     */ import org.springframework.web.bind.annotation.RequestMapping;
@@ -116,4 +119,24 @@
 /*     */     }
 /* 136 */     return customer;
 /*     */   }
-/*     */ }
+/*     */
+
+
+    /*     */   public List<Integer> findCustomerIdByName(String customerName) {
+        /* 127 */     List<Customer> customers = null;
+        /*     */     try {
+            CustomerExample example = new CustomerExample();
+            CustomerExample.Criteria criteria = example.createCriteria();
+            criteria.andNameLike(Stringstr.parse(customerName));
+            /* 129 */       customers = this.customerMapper.selectByExample(example);
+            /* 130 */     } catch (Exception e) {
+            /* 131 */       LOGGER.error("newsMapper.selectByExample查询数据失败", e);
+            /*     */     }
+        /* 133 */     if (Objects.equals(customers, null)) {
+            /* 134 */       LOGGER.error("查询结果为空");
+            /*     */     }
+        /* 136 */     return customers.stream().map(Customer::getId).collect(Collectors.toList());
+        /*     */   }
+
+
+    /*     */ }

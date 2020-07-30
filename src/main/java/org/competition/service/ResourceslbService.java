@@ -5,18 +5,20 @@ import org.apache.logging.log4j.Logger;
 import org.competition.domain.*;
 import org.competition.mapper.ResourceslbMapper;
 import org.competition.mapper.ResourcevpsMapper;
+import org.competition.utils.Stringstr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.thymeleaf.expression.Strings;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Component
@@ -33,7 +35,7 @@ public class ResourceslbService {
 
     @RequestMapping({"/add"})
     public int addResourceslb(String name,
-                              @RequestParam(value="order_id",required = false) Integer orderId,
+                              @RequestParam(value = "order_id", required = false) Integer orderId,
                               @RequestParam(required = false) Integer type,
                               @RequestParam(required = false) Integer network,
                               @RequestParam(required = false) String ipaddress,
@@ -42,7 +44,7 @@ public class ResourceslbService {
                               @RequestParam(required = false) String backup,
                               @RequestParam(required = false) String backup1,
                               @RequestParam(required = false) String backup2,
-                              @RequestParam(value="create_user",required = false) String createUser
+                              @RequestParam(value = "create_user", required = false) String createUser
     ) {
         Resourceslb resourceslb = (new Resourceslb()).setName(name).setOrderId(orderId)
                 .setType(type).setIpaddress(ipaddress).setPort(port)
@@ -104,8 +106,8 @@ public class ResourceslbService {
     @RequestMapping({"/update"})
     public int update(Integer id,
                       @RequestParam(required = false) String name,
-                      @RequestParam(value = "order_id",required = false) Integer orderId,
-                      @RequestParam(value = "update_user",required = false) String updateUser,
+                      @RequestParam(value = "order_id", required = false) Integer orderId,
+                      @RequestParam(value = "update_user", required = false) String updateUser,
                       @RequestParam(required = false) Integer type,
                       @RequestParam(required = false) Integer network,
                       @RequestParam(required = false) String ipaddress,
@@ -158,7 +160,79 @@ public class ResourceslbService {
         }
         return result;
     }
+    public List<Integer> findslbIdByName(String name) {
+        List<Resourceslb> resourceslbes = null;
+        try {
+            ResourceslbExample example = new ResourceslbExample();
+            ResourceslbExample.Criteria criteria = example.createCriteria();
+            criteria.andNameLike(Stringstr.parse(name));
+            resourceslbes = this.resourceslbMapper.selectByExample(example);
+        } catch (Exception e) {
+            LOGGER.error("resourceslbMapper.selectByExample查询数据失败", e);
+        }
+        if (Objects.equals(resourceslbes, null)) {
+            LOGGER.error("查询结果为空");
+        }
+        return resourceslbes.stream().map(Resourceslb::getId).collect(Collectors.toList());
+    }
 
+
+    public List<Resourceslb> findAll() {
+        return resourceslbMapper.selectByExample(null);
+    }
+
+    @RequestMapping({"/select"})
+    public List<Resourceslb> select(@RequestParam(required = false) String name,
+                                    @RequestParam(required = false) String startTime,
+                                    @RequestParam(required = false) Integer type,
+                                    @RequestParam(required = false) Integer network,
+                                    @RequestParam(required = false) String ipaddress,
+                                    @RequestParam(required = false) String port,
+                                    @RequestParam(required = false) String endTime) {
+
+        Date beforedate = null;
+        Date afterDate = null;
+
+        if (startTime != null && endTime != null) {
+            startTime += " 00:00:00";
+            endTime += " 23:59:59";
+
+
+            try {
+                beforedate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startTime);
+                afterDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(endTime);
+            } catch (ParseException e) {
+                LOGGER.error("日期转化错误");
+            }
+
+        }
+
+
+        ResourceslbExample example = new ResourceslbExample();
+        ResourceslbExample.Criteria criteria = example.createCriteria();
+
+        if (name != null) {
+            criteria.andNameLike(Stringstr.parse(name));
+        }
+        if (type != null) {
+            criteria.andTypeEqualTo(type);
+        }
+        if(startTime != null && endTime != null) {
+            criteria.andUpdateTimeBetween(beforedate, afterDate);
+        }
+        if(network!=null){
+            criteria.andNetworkEqualTo(network);
+        }
+        if(ipaddress!=null) {
+            criteria.andIpaddressLike(Stringstr.parse(ipaddress));
+        }
+        if(port!=null) {
+            criteria.andPortLike(Stringstr.parse(port));
+        }
+
+        List<Resourceslb> resourceslbes = resourceslbMapper.selectByExample(example);
+        return resourceslbes;
+    }
 
 
 }

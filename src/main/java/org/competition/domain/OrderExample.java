@@ -339,6 +339,14 @@ import java.util.ArrayList;
             /*     */
         }
 
+        public OrderExample.Criteria andQueueIdEqualTo(Integer value) {
+            /* 179 */
+            addCriterion("queue_id =", value, "queueId");
+            /* 180 */
+            return (OrderExample.Criteria) this;
+            /*     */
+        }
+
         /*     */
         /*     */
         public OrderExample.Criteria andCustomerIdNotEqualTo(Integer value) {
@@ -899,6 +907,14 @@ import java.util.ArrayList;
             /*     */
         }
 
+        public OrderExample.Criteria andNameLike(String value) {
+            /* 459 */
+            addCriterion("name like", value, "name");
+            /* 460 */
+            return (OrderExample.Criteria) this;
+            /*     */
+        }
+
         /*     */
         /*     */
         public OrderExample.Criteria andContactNotLike(String value) {
@@ -1039,6 +1055,21 @@ import java.util.ArrayList;
             /*     */
         }
 
+        public OrderExample.Criteria andKcontactLike(String value) {
+            /* 529 */
+            addCriterion("kcontact like", value, "kcontact");
+            /* 530 */
+            return (OrderExample.Criteria) this;
+            /*     */
+        }
+
+        public OrderExample.Criteria andKcontactPhoneLike(String value) {
+            /* 529 */
+            addCriterion("kcontact_phone like", value, "kcontactPhone");
+            /* 530 */
+            return (OrderExample.Criteria) this;
+            /*     */
+        }
         /*     */
         /*     */
         public OrderExample.Criteria andContactPhoneNotLike(String value) {

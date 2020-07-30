@@ -1,15 +1,10 @@
 package org.competition.mapper;
 
 import org.competition.CompetitionServerApplication;
-import org.competition.dao.IdAndName;
-import org.competition.dao.OrderCustomer;
-import org.competition.dao.OrderPojo;
-import org.competition.dao.OrderTaskResult;
-import org.competition.domain.News;
-import org.competition.domain.Order;
-import org.competition.domain.Solution;
-import org.competition.domain.User;
+import org.competition.dao.*;
+import org.competition.domain.*;
 import org.competition.service.*;
+import org.competition.utils.TimeParse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
@@ -30,6 +25,9 @@ import java.util.List;
 public class NewsMapperTest {
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private NewsMapper newsMapper;
 
     @Autowired
@@ -44,11 +42,12 @@ public class NewsMapperTest {
     @Autowired
     private NewsService newsService;
 
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private ResourcevpsService resourcevpsService;
+
+    @Autowired
+    private ResourceossService resourceossService;
 
 
     @Autowired
@@ -68,7 +67,35 @@ public class NewsMapperTest {
 
 //        orderTaskService.deleteById(88);
 
-        List<OrderCustomer> orderCustomers = orderService.ListCustomer(81);
+
+       // List<OrderCustomer> orderCustomers = orderService.ListCustomer(81);
+//      int result =  orderService.addOrder(111,"contact","111","111","111",
+//                "111",11,"111","111","111","111","111","111","Wed Jul 22 2020 11:51:09 GMT+0800 (中国标准时间)"
+//                ,"Wed Jul 22 2020 11:51:09 GMT+0800 (中国标准时间)");
+//
+//        orderService.deleteOrderById(126);
+
+ //         List<OrderTaskResult> orderTaskResults =  orderTaskService.findList();
+//        List<OrderCustomer> orderCustomers = orderService.ListCustomer(100);
+//        orderTaskService.deleteById(104);
+//        orderService.updateOrder(100,null,null,null,null,
+//                null,null,100, 1111,"null",null,null,
+//                "null","null","Wed Jul 22 2020 11:51:09 GMT+0800 (中国标准时间)","Wed Jul 22 2020 11:51:09 GMT+0800 (中国标准时间)");
+
+//        List<OrderReport> orderReports = orderService.findOrderReport();
+//        List<QuantityWeek> quantityWeeks = orderService.quantityWeek();
+//        userService.updatePasswordById(108,"11111","1111","123456");
+//
+//        List<Resourceoss> resourceosses = resourceossService.select("回",null,
+//                null);
+//        List<OrderCustomer> orderCustomer = orderService.select(null,null,null,null,
+//                null,null,null,null,"2020-07-22","2020-07-25");
+
+
+        List<OrderTaskResult> orderTaskResults = orderTaskService.select(null,
+                null,"回",null,null,
+                null,null,null,null);
+
         System.out.println();
     }
 
@@ -94,12 +121,6 @@ public class NewsMapperTest {
 //
 //        orderService.insertOrder(orderPojo);
 //    }
-
-    @Test
-    public void newsTest(){
-        userService.addUser("1","1","yjy","123","123","1");
-    }
-
 
 
 

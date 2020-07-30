@@ -74,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, order_id, create_time, update_time, create_user, update_user, size, quantity, 
+    id,  `name`, order_id, create_time, update_time, create_user, update_user, `size`, quantity,
     backup, backup1, backup2
   </sql>
 

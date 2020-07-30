@@ -1,13 +1,10 @@
 package org.competition.service;
-
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.competition.dao.OrderTaskResult;
-import org.competition.domain.Order;
-import org.competition.domain.Ordertask;
-import org.competition.domain.OrdertaskExample;
+import org.competition.domain.*;
 import org.competition.mapper.OrdertaskMapper;
+import org.competition.utils.Stringstr;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,7 +54,10 @@ public class OrderTaskService {
 
     @RequestMapping({"/list"})
     public List<OrderTaskResult> findList(){
-        List<Ordertask> ordertasks = ordertaskMapper.selectByExample(new OrdertaskExample());
+        OrdertaskExample ordertaskExample = new OrdertaskExample();
+        ordertaskExample.setOrderByClause("update_time DESC");
+
+        List<Ordertask> ordertasks = ordertaskMapper.selectByExample(ordertaskExample);
         if (ordertasks.size()==0||ordertasks==null){
             return null;
         }
@@ -72,6 +74,7 @@ public class OrderTaskService {
                 orderTaskResult.setOrder_name(orderService.findOrderById(ordertask.getOrderId()).getName());
             }}catch(Exception e){
                     LOGGER.error("根据orderId找不到customername"); }
+            try {
             switch (ordertask.getTaskType()){
                 case "VPS": try {orderTaskResult.setResource_name(resourcevpsService.findById(ordertask.getResourceId()).getName()); }catch(Exception e){
                     LOGGER.error("根据ResourceId找不到VPSname");
@@ -86,6 +89,8 @@ public class OrderTaskService {
                     LOGGER.error("根据ResourceId找不到RDSname");
                 }break;
             }
+            }catch(Exception e){
+                LOGGER.error("根据TaskType找不到name"); }
             orderTaskResults.add(orderTaskResult);
 
         }
@@ -95,6 +100,7 @@ public class OrderTaskService {
     @RequestMapping({"/listcustomer"})
     public List<OrderTaskResult> findListCoumster(Integer customer_id){
         OrdertaskExample ordertaskExample = new OrdertaskExample();
+        ordertaskExample.setOrderByClause("update_time DESC");
         OrdertaskExample.Criteria criteria= ordertaskExample.createCriteria();
         criteria.andCustomerIdEqualTo(customer_id);
 
@@ -178,7 +184,6 @@ public class OrderTaskService {
             @RequestParam(required = false) String keyword13,
             @RequestParam(required = false) String keyword14,
             @RequestParam(required = false) String keyword15
-
     ) {
         Ordertask ordertask = new Ordertask().setCustomerId(customer_id).setOrderId(order_id)
                 .setResourceId(resource_id).setCreateTime(create_time).setUpdateTime(update_time)
@@ -197,6 +202,7 @@ public class OrderTaskService {
 
     @RequestMapping({"/update"})
     public int updateOrderTask(
+            Integer id,
             Integer customer_id,
             @RequestParam(required = false) Integer order_id,
             @RequestParam(required = false) Integer resource_id,
@@ -227,12 +233,7 @@ public class OrderTaskService {
             @RequestParam(required = false) String keyword15
 
     ) {
-
-        OrdertaskExample ordertaskExample = new OrdertaskExample();
-        OrdertaskExample.Criteria criteria= ordertaskExample.createCriteria();
-        criteria.andCustomerIdEqualTo(customer_id);
-
-        Ordertask ordertask = new Ordertask().setCustomerId(customer_id).setOrderId(order_id)
+        Ordertask ordertask = new Ordertask().setId(id).setCustomerId(customer_id).setOrderId(order_id)
                 .setResourceId(resource_id).setCreateTime(create_time).setUpdateTime(update_time)
                 .setUpdateUser(update_user).setTaskAction(task_action).setTaskType(task_type)
                 .setStatus(status).setName(name).setQuantity(quantity).setAttachment(attachment)
@@ -241,17 +242,127 @@ public class OrderTaskService {
                 .setKeyword8(keyword8).setKeyword9(keyword9).setKeyword10(keyword10).setKeyword11(keyword11)
                 .setKeyword12(keyword12).setKeyword13(keyword13).setKeyword13(keyword14).setKeyword13(keyword15);
 
-        int result = ordertaskMapper.updateByExampleSelective(ordertask,ordertaskExample);
+        int result = ordertaskMapper.updateByPrimaryKeySelective(ordertask);
         return result;
 
     }
 
     @RequestMapping({"/deletebyid"})
-    public int deleteById(Integer customer_id){
-        OrdertaskExample ordertaskExample = new OrdertaskExample();
-        OrdertaskExample.Criteria criteria= ordertaskExample.createCriteria();
-        criteria.andCustomerIdEqualTo(customer_id);
-        int result = ordertaskMapper.deleteByExample(ordertaskExample);
+    public int deleteById(Integer Id){
+        int result = ordertaskMapper.deleteByPrimaryKey(Id);
         return result;
     }
+
+    @RequestMapping({"/select"})
+    public List<OrderTaskResult> select(  @RequestParam(required = false) String customerName,
+                                    @RequestParam(required = false) String orderName,
+                                    @RequestParam(required = false) String resourceName,
+                                    @RequestParam(required = false) String name,
+                                    @RequestParam(required = false) List<String> status,
+                                    @RequestParam(required = false) List<String> taskAction,
+                                    @RequestParam(required = false) List<String> taskType,
+                                    @RequestParam(required = false) String startTime,
+                                    @RequestParam(required = false) String endTime) {
+
+        Date beforedate = null;
+        Date afterDate = null;
+
+        if (startTime != null && endTime != null) {
+            startTime += " 00:00:00";
+            endTime += " 23:59:59";
+
+
+            try {
+                beforedate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startTime);
+                afterDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(endTime);
+            } catch (ParseException e) {
+                LOGGER.error("日期转化错误");
+            }
+
+        }
+
+
+        OrdertaskExample example = new OrdertaskExample();
+        OrdertaskExample.Criteria criteria = example.createCriteria();
+
+        example.setOrderByClause("update_time DESC");
+
+        if (customerName != null) {
+            List<Integer> customerIds = customerService.findCustomerIdByName(customerName);
+            criteria.andCustomerIdIn(customerIds);
+        }
+        if (orderName != null) {
+            List<Integer> orderIds = orderService.findOrderIdsByName(orderName);
+            criteria.andCustomerIdIn(orderIds);
+        }
+        if(resourceName!=null) {
+            List<Integer> oss = resourceossService.findOssIdByName(resourceName);
+            List<Integer> rds = resourcerdsService.findRdsIdByName(resourceName);
+            List<Integer> vps = resourcevpsService.findvpsIdByName(resourceName);
+            List<Integer> slb = resourceslbService.findslbIdByName(resourceName);
+            oss.addAll(rds);
+            oss.addAll(vps);
+            oss.addAll(slb);
+            criteria.andResourceIdIn(oss);
+        }
+        if(startTime != null && endTime != null) {
+            criteria.andUpdateTimeBetween(beforedate, afterDate);
+        }
+        if (name!=null) {
+            criteria.andNameLike(Stringstr.parse(name));
+        }
+        if(status!=null) {
+            criteria.andStatusIn(status);
+        }
+        if (taskAction!=null) {
+            criteria.andTaskActionIn(taskAction);
+        }
+        if (taskType!=null) {
+            criteria.andTaskTypeIn(taskType);
+        }
+
+        List<Ordertask> ordertasks = ordertaskMapper.selectByExample(example);
+
+
+        if (ordertasks.size()==0||ordertasks==null){
+            return null;
+        }
+        List<OrderTaskResult> orderTaskResults = new ArrayList<>();
+        for (Ordertask ordertask:ordertasks) {
+            OrderTaskResult orderTaskResult = new OrderTaskResult();
+            BeanUtils.copyProperties(ordertask, orderTaskResult);
+            try {
+                orderTaskResult.setCustomer_name(customerService.findCustomerById(ordertask.getCustomerId()).getName());
+            }catch(Exception e){
+                LOGGER.error("根据customerId找不到customername"); }
+            try {
+                if (ordertask.getOrderId()!=null){
+                    orderTaskResult.setOrder_name(orderService.findOrderById(ordertask.getOrderId()).getName());
+                }}catch(Exception e){
+                LOGGER.error("根据orderId找不到customername"); }
+            try {
+                switch (ordertask.getTaskType()){
+                    case "VPS": try {orderTaskResult.setResource_name(resourcevpsService.findById(ordertask.getResourceId()).getName()); }catch(Exception e){
+                        LOGGER.error("根据ResourceId找不到VPSname");
+                    } break;
+                    case "OSS": try {orderTaskResult.setResource_name(resourceossService.findById(ordertask.getResourceId()).getName());  }catch(Exception e){
+                        LOGGER.error("根据ResourceId找不到OSSname");
+                    }break;
+                    case "SLB": try {orderTaskResult.setResource_name(resourceslbService.findById(ordertask.getResourceId()).getName());  }catch(Exception e){
+                        LOGGER.error("根据ResourceId找不到SLBname");
+                    }break;
+                    case "RDS": try {orderTaskResult.setResource_name(resourcerdsService.findById(ordertask.getResourceId()).getName());  }catch(Exception e){
+                        LOGGER.error("根据ResourceId找不到RDSname");
+                    }break;
+                }
+            }catch(Exception e){
+                LOGGER.error("根据TaskType找不到name"); }
+            orderTaskResults.add(orderTaskResult);
+
+        }
+        return orderTaskResults;
+    }
+
+
+
 }
